@@ -1,0 +1,66 @@
+{
+  "file": "phase-01-complete-atlas.png",
+  "size": [
+    1254,
+    1254
+  ],
+  "format": "RGBA",
+  "alpha_range": [
+    0,
+    255
+  ],
+  "intended_columns": 6,
+  "intended_rows": 6,
+  "pieces": [
+    [
+      "wharf",
+      "wooden-pier",
+      "crane",
+      "cargo-warehouse",
+      "cargo-stack",
+      "dock-stairs"
+    ],
+    [
+      "storefront",
+      "balcony-house",
+      "street-arch",
+      "stone-stairs",
+      "fountain-lamp",
+      "courtyard-gate"
+    ],
+    [
+      "slate-roof",
+      "terrace",
+      "chimneys",
+      "fire-escape",
+      "clocktower",
+      "roof-connector"
+    ],
+    [
+      "stone-bridge",
+      "steel-span",
+      "broken-bridge",
+      "canal-lock",
+      "drain",
+      "bridge-railing"
+    ],
+    [
+      "factory-roof",
+      "boiler",
+      "catwalk",
+      "lift",
+      "exhaust-pipes",
+      "factory-wall"
+    ],
+    [
+      "terminal-gate",
+      "control-mechanism",
+      "reactor",
+      "tunnel",
+      "arena-wall",
+      "shadow-alcove"
+    ]
+  ],
+  "status": "art reference; crop bounds and collision surfaces must be authored and verified before engine import",
+  "grid_warning": "Generated placement is not a perfectly uniform grid. Do not assume automatic fixed-cell slicing."
+}

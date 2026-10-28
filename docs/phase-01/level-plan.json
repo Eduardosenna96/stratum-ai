@@ -1,0 +1,159 @@
+{
+  "name": "As sombras despertam — Terminal 08",
+  "status": "design-first: not yet implemented",
+  "route_preference": "mixed streets, rooftops and docks",
+  "camera": "side-scrolling, 1200x600 viewport",
+  "target_duration_minutes": [
+    7,
+    10
+  ],
+  "world_units": {
+    "width": 9600,
+    "height": 960
+  },
+  "principles": [
+    "Architecture must explain each walkable surface; no arbitrary floating blocks.",
+    "Ground route remains readable; upper paths and canal paths reconnect.",
+    "Each new challenge is shown safely before combining it with combat.",
+    "Create silhouette, elevation and pacing changes; do not tile one facade throughout."
+  ],
+  "sectors": [
+    {
+      "id": 1,
+      "name": "Cais das Sombras",
+      "x": [
+        0,
+        1500
+      ],
+      "role": "arrival and movement tutorial",
+      "landmark": "dock crane and warm cargo warehouse",
+      "routes": [
+        "stone wharf main route",
+        "raised warehouse roof",
+        "short wooden pier with return stairs"
+      ],
+      "encounters": "one dormant drone after a safe jumping section",
+      "safe_point": 1200,
+      "challenge": "short jumps over water, generous platforms",
+      "art": "wharf, pier, crane, cargo doors, crates, dock stairs"
+    },
+    {
+      "id": 2,
+      "name": "Rua dos Lampiões",
+      "x": [
+        1500,
+        3100
+      ],
+      "role": "introduce patrol and first shadow fragment",
+      "landmark": "corner shop and Gothic courtyard arch",
+      "routes": [
+        "continuous street with stairs",
+        "shop awnings to balcony",
+        "courtyard detour returning to street"
+      ],
+      "encounters": "patrol drone then one announced shot in clear space",
+      "fragment": "courtyard balcony",
+      "challenge": "choose street safety or upper shortcut",
+      "art": "storefront, residential balcony, passage arch, stairs, fountain, courtyard gate"
+    },
+    {
+      "id": 3,
+      "name": "Telhados do Relógio",
+      "x": [
+        3100,
+        4700
+      ],
+      "role": "vertical traversal and first major vista",
+      "landmark": "amber clocktower above the city",
+      "routes": [
+        "stair and fire escape ascent",
+        "rooftop connectors",
+        "forgiving lower street fallback"
+      ],
+      "encounters": "one hovering drone between wide landings",
+      "safe_point": 4400,
+      "challenge": "height variation and controlled jumps without mandatory blind leaps",
+      "art": "slate roof, terrace, chimneys, fire escape, clocktower, plank connector"
+    },
+    {
+      "id": 4,
+      "name": "Ponte dos Ecos",
+      "x": [
+        4700,
+        6400
+      ],
+      "role": "combine jumping and evasion; second fragment",
+      "landmark": "large stone-and-iron canal bridge",
+      "routes": [
+        "upper steel bridge route",
+        "lower canal maintenance ledges",
+        "short secret drainage branch returning to bridge"
+      ],
+      "encounters": "alternating drone positions, no unavoidable crossfire",
+      "fragment": "canal lock maintenance niche",
+      "challenge": "broken bridge segment followed by a safe landing",
+      "art": "stone arch, steel span, broken end, lock gears, drain, railings"
+    },
+    {
+      "id": 5,
+      "name": "Pátio das Máquinas",
+      "x": [
+        6400,
+        8100
+      ],
+      "role": "industrial traversal climax and final fragment",
+      "landmark": "factory skylights and a riveted lift gantry",
+      "routes": [
+        "factory ground route",
+        "elevated steel catwalk",
+        "optional lift to the generator platform"
+      ],
+      "encounters": "two drones in separated readable arenas",
+      "fragment": "generator platform",
+      "safe_point": 7950,
+      "challenge": "moving lift introduced above safe flooring, then a controlled jump",
+      "art": "factory roof, boiler, catwalk, lift, exhaust pipes, factory wall"
+    },
+    {
+      "id": 6,
+      "name": "Terminal 08",
+      "x": [
+        8100,
+        9600
+      ],
+      "role": "quiet approach, preparation and boss",
+      "landmark": "reinforced terminal gate and circular control mechanism",
+      "routes": [
+        "single readable entrance",
+        "small optional recovery alcove",
+        "wide flat arena with visible exits"
+      ],
+      "encounters": "large round-eye Vigia; fixed-direction charge with anticipation and recovery",
+      "gate": "opens after three fragments",
+      "safe_point": 8500,
+      "challenge": "boss arena uses learned dash timing; no surprise floor gaps",
+      "art": "terminal gate, control mechanism, reactor, tunnel, arena wall, shadow alcove"
+    }
+  ],
+  "readability": {
+    "walkable_edges": "subtle cool highlights",
+    "friendly_shadow_landmarks": "electric blue",
+    "drone_warning": "amber becomes red before attack",
+    "checkpoints": "blue infinity mark at safe level ground",
+    "decorations": "never imply a required mechanic that is not implemented",
+    "mandatory_fragments": "Visible from the principal route; hidden branches provide optional rewards, never an unexplained progression lock."
+  },
+  "implementation_followup": [
+    "approve whole-level composition",
+    "convert architectural chunks into measured collision surfaces",
+    "test jumps, fallbacks and reconnecting paths",
+    "implement the factory lift",
+    "place drones after routes are traversable",
+    "test whole route, then publish HTML"
+  ],
+  "reference_art": {
+    "atlas": "assets/phase-01-complete-atlas.png",
+    "composition": "docs/phase-01/full-map.png",
+    "note": "The six numbered panels are a folded overview of one long level, not a literal shared collision grid."
+  }
+}
