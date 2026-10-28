@@ -1,15 +1,15 @@
 {
   "name": "As sombras despertam — Terminal 08",
-  "status": "design-first: not yet implemented",
+  "status": "implemented in v0.4; geometry, collectibles and lift validated",
   "route_preference": "mixed streets, rooftops and docks",
   "camera": "side-scrolling, 1200x600 viewport",
   "target_duration_minutes": [
-    7,
-    10
+    3,
+    6
   ],
   "world_units": {
     "width": 9600,
-    "height": 960
+    "height": 600
   },
   "principles": [
     "Architecture must explain each walkable surface; no arbitrary floating blocks.",
@@ -144,16 +144,22 @@
     "mandatory_fragments": "Visible from the principal route; hidden branches provide optional rewards, never an unexplained progression lock."
   },
   "implementation_followup": [
-    "approve whole-level composition",
-    "convert architectural chunks into measured collision surfaces",
-    "test jumps, fallbacks and reconnecting paths",
-    "implement the factory lift",
-    "place drones after routes are traversable",
-    "test whole route, then publish HTML"
+    "Playtest combat difficulty with players; geometry already verified",
+    "Refine authored transitions and landmarks from player feedback",
+    "Preserve the tested six-sector route when adding optional secrets"
   ],
   "reference_art": {
     "atlas": "assets/phase-01-complete-atlas.png",
     "composition": "docs/phase-01/full-map.png",
     "note": "The six numbered panels are a folded overview of one long level, not a literal shared collision grid."
+  },
+  "geometry_source": "level.js",
+  "validation": {
+    "mechanics": 9,
+    "browser_scenarios": 20,
+    "route_ticks": 4838,
+    "route_scope": "six sectors, 3 fragments, lift, boss arena and return to start without teleport or respawn; enemies disabled to isolate geometry",
+    "lift_ticks": 900,
+    "lift_scope": "continuous ascent and descent while supporting the player"
   }
 }

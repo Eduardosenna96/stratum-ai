@@ -36,3 +36,7 @@ Este projeto usa o Shadowman de Eduardo Senna: capuz e traje negros, rosto ocult
 6. Entregue `dist/Shadowman.html` e o pacote fonte. Não confunda servidor local com site público ou anexo garantido. Nunca prometa publicação ou restauração em nova máquina sem verificação.
 
 Pare ao completar o objetivo e passar os testes relevantes. Registre próximos passos em docs/DEVELOPMENT.md, sem expandir indefinidamente o escopo.
+
+## Fase 1 completa
+
+O mapa de seis setores e 9600 unidades é definido em `level.js`. Preserve as rotas por ruas, telhados e canal e os seus reencontros. Escadas têm subida automática e o elevador carrega o jogador. Use recortes explícitos de `assets/phase-01-atlas.js`; a imagem não tem uma grade perfeitamente uniforme. Ao modificar geometria, valide `tests/phase-route.cjs` de ponta a ponta e na volta, com coleta e elevador. Esse teste isola geometria desligando inimigos; não descreva isso como validação da dificuldade completa.

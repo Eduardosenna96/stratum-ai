@@ -1,21 +1,23 @@
-# Fase 1 — mapa antes da implementação
+# Fase 1 — mapa completo e montagem 0.4
 
-Rota escolhida pelo criador: mistura de ruas, telhados e docas. Esta pasta planeja uma fase inteira de 7–10 minutos, com 9600 unidades de comprimento e seis setores distintos. O protótipo anterior de 4000 unidades não representa este mapa.
+Rota escolhida pelo criador: mistura de ruas, telhados e docas. A fase foi montada em `level.js`, com 9600 unidades de comprimento, seis setores e viewport fixo de 1200 × 600. As primeiras metas de altura/duração foram ajustadas à física real; tempo de jogadores ainda não foi medido.
 
-O percurso vai do Cais das Sombras ao Terminal 08, passando por Rua dos Lampiões, Telhados do Relógio, Ponte dos Ecos e Pátio das Máquinas. A arquitetura deve justificar plataformas e alturas. Ruas formam uma rota principal legível; caminhos por telhados e manutenção do canal se reencontram. A arena final não tem quedas surpresa.
+O percurso vai do Cais das Sombras ao Terminal 08, passando por Rua dos Lampiões, Telhados do Relógio, Ponte dos Ecos e Pátio das Máquinas. Ruas formam uma rota principal legível; caminhos pelos telhados e manutenção do canal se reencontram. A arena final tem chão seguro e largo.
 
-`level-plan.json` descreve funções dos setores, rotas, marcos, pontos seguros e fragmentos. Dimensões e duração são metas de projeto; não foram validadas em gameplay. O elevador industrial e as novas rotas ainda precisam ser implementados. Não anunciar este plano como fase jogável.
+## Arte e recortes
 
-O atlas deve acrescentar silhuetas e funções arquitetônicas, não apenas recolorir ou repetir a mesma fachada. A prancha do percurso servirá para revisar a composição inteira antes de montar colisões e encontros.
+`../../assets/phase-01-complete-atlas.png` contém36 peças por setor. O original1254 ×1254 RGBA foi preservado. `atlas-manifest.json` registra inventário e dimensões. Os espaçamentos não são uma grade uniforme: recortes explícitos são gerados por `tools/describe-phase-atlas.py` em `assets/phase-01-atlas.js/json`.
 
-## Atlas completo da fase
+`full-map.png` apresenta os seis setores numerados em uma prancha dobrada de3colunas ×2linhas, com caminho principal azul e alternativas douradas. A imagem original2172 ×724 foi preservada. Ela orienta a composição e o ritmo; a montagem jogável adapta as posições a saltos, colisões e conexões, sem reproduzir cada pixel do conceito.
 
-`../../assets/phase-01-complete-atlas.png` contém 36 peças de arquitetura e cenário, organizadas por setor: docas, ruas, telhados, canal/ponte, fábrica e Terminal 08. `atlas-manifest.json` registra o inventário e as dimensões originais. O arquivo foi copiado sem edição.
+## Regras de travessia
 
-A prancha gerada tem distribuição visual de 6 × 6, mas os espaçamentos e alturas das linhas não são perfeitamente uniformes. Antes de entrar no runtime, cada peça precisa de recorte explícito, âncora e classificação de colisão. Não tratar a imagem como tileset automaticamente conectado ou declarar a fase montada apenas por gerar o atlas.
+- Escadas: subir automaticamente ao andar.
+- Ponte: travessia superior ou descer na abertura para buscar o fragmento no canal; a escada da manutenção volta à ponte.
+- Fábrica: elevador liga o chão à plataforma do gerador.
+- Telhados: recompensas opcionais; ruas abaixo permitem recuperar uma queda.
+- Pontos seguros: armazém, relógio, fábrica e entrada do terminal.
 
-## Visão geral do percurso
+## Validação
 
-`full-map.png` apresenta os seis setores numerados em uma prancha dobrada (3 colunas × 2 linhas), com percurso principal em azul e alternativas em dourado. É referência de composição, escala relativa e ritmo; as setas ilustrativas não substituem a topologia de `level-plan.json`. A imagem original mede (2172, 724) pixels e foi copiada sem edição.
-
-O trabalho de planejamento não altera a versão pública do jogo. O próximo passo de implementação é autorar as superfícies e transições do mapa inteiro, em vez de repetir um único conjunto de plataformas.
+9 testes de mecânica e20 cenários no Chromium passaram. A suíte fez ida e volta, pegou3 fragmentos e chegou à arena em4838 ticks físicos, sem teleporte ou respawn. Inimigos foram desligados nesse teste para isolar geometria; combate e projéteis têm verificações próprias. O elevador manteve apoio em900 ticks de subida/descida. Foram inspecionadas capturas dos seis setores.

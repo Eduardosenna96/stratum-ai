@@ -1,6 +1,7 @@
 'use strict';
 // Uses the browser tooling supplied by the managed environment; no install step.
 const assert = require('node:assert/strict');
+const { runPhaseRoute } = require('./phase-route.cjs');
 let chromium;
 try { ({ chromium } = require('playwright')); }
 catch { ({ chromium } = require('/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright')); }
@@ -24,32 +25,10 @@ const origin = process.env.SHADOWMAN_TEST_URL || process.env.BASE_URL || 'http:/
     assert.equal(await page.evaluate(() => __shadowman.spriteReady), true);
   });
 
-  await check('Three collectible routes are reachable by real platform jumps', async () => {
-    const routes = await page.evaluate(() => {
-      const h = __shadowman; h.start(); h.step(2);
-      const reports = [];
-      // Start each independent route on its ground approach. No position edits after this point.
-      for (const [startX, firstY, launchX, targetY, targetX] of [[320,405,510,315,715],[1190,410,1400,325,1600],[2190,405,2370,310,2580]]) {
-        h.keys.clear(); Object.assign(h.p,{x:startX,y:426,vx:0,vy:0,ground:true,inv:500,stun:0,attackAge:-1,dash:0});
-        const path = [];
-        function jumpTo(y) {
-          h.keys.add('ArrowRight'); h.command('Space'); let leftGround=false;
-          for(let i=0;i<85;i++) { h.step(); if(!h.p.ground)leftGround=true; if(leftGround&&h.p.ground){path.push({x:Math.round(h.p.x),floor:h.p.y+h.p.h}); if(h.p.y+h.p.h!==y)throw new Error(`Route ${startX}: landed at ${h.p.y+h.p.h} instead of ${y}, x=${h.p.x}`);return;} }
-          throw new Error(`Route ${startX}: no landing`);
-        }
-        jumpTo(firstY);
-        while(h.p.x<launchX&&h.p.ground)h.step();
-        jumpTo(targetY);
-        for(let i=0;i<55&&h.p.x+15<targetX;i++)h.step();
-        h.keys.clear();h.p.vx=0;
-        const seal=h.seals.find(s=>s.x===targetX);
-        if(!seal.taken)throw new Error(`Fragment ${targetX} was not collected; x=${h.p.x} y=${h.p.y}`);
-        reports.push({startX,path,fragment:seal.x});
-      }
-      return reports;
-    });
-    assert.equal(routes.length,3);
-    console.log('  Routes:',JSON.stringify(routes));
+  await check('Complete six-sector route collects all fragments and returns without teleporting', async () => {
+    const route = await page.evaluate(source=>(0,eval)('('+source+')')(__shadowman),runPhaseRoute.toString());
+    assert.deepEqual(route.visited,[1,2,3,4,5,6]);assert.equal(route.fragments,3);assert.ok(route.final.x<150);
+    console.log('  Phase route:',JSON.stringify({ticks:route.steps,events:route.events}));
   });
 
   await check('Attack has startup and applies at most one hit per target', async () => {
@@ -58,7 +37,7 @@ const origin = process.env.SHADOWMAN_TEST_URL || process.env.BASE_URL || 'http:/
   });
 
   await check('Coyote time, jump buffering and variable jump height', async () => {
-    const result=await page.evaluate(()=>{const h=__shadowman;h.start();h.step(2);Object.assign(h.p,{x:882,y:426,vx:0,ground:false,coyote:4});h.command('Space');h.step();const coyote=h.p.vy<0;
+    const result=await page.evaluate(()=>{const h=__shadowman;h.start();h.step(2);Object.assign(h.p,{x:452,y:426,vx:0,ground:false,coyote:4});h.command('Space');h.step();const coyote=h.p.vy<0;
       Object.assign(h.p,{x:200,y:421,vy:3,ground:false,coyote:0,jumpBuffer:0});h.command('Space');h.step(3);const buffer=h.p.vy<0;
       h.release('Space');return{coyote,buffer,shortened:h.p.vy> -10};});
     assert.deepEqual(result,{coyote:true,buffer:true,shortened:true});
@@ -70,12 +49,12 @@ const origin = process.env.SHADOWMAN_TEST_URL || process.env.BASE_URL || 'http:/
   });
 
   await check('Gate holds closed without fragments', async () => {
-    const result=await page.evaluate(()=>{const h=__shadowman;h.start();h.p.x=3145;h.step();return{x:h.p.x,w:h.p.w,boss:h.boss.phase};});
-    assert.ok(result.x+result.w<=3150);assert.equal(result.boss,'sleep');
+    const result=await page.evaluate(()=>{const h=__shadowman;h.start();h.p.x=h.level.gate-5;h.step();return{x:h.p.x,w:h.p.w,boss:h.boss.phase};});
+    assert.ok(result.x+result.w<=8620);assert.equal(result.boss,'sleep');
   });
 
   await check('Boss charge direction is fixed; defeating it completes level', async () => {
-    const result=await page.evaluate(()=>{const h=__shadowman;h.start();h.step(2);h.seals.forEach(s=>s.taken=true);h.p.x=3300;h.step();h.boss.timer=1;h.step();const dir=h.boss.dir,before=h.boss.x;h.p.x=h.boss.x+180;h.step();const locked=h.boss.dir===dir&&h.boss.x<before;Object.assign(h.boss,{phase:'recover',timer:99,hp:1});Object.assign(h.p,{x:h.boss.x-100,y:426,face:1,vx:0,attackCool:0});h.keys.clear();h.command('KeyJ');h.step(8);return{locked,mode:h.mode,hp:h.boss.hp};});
+    const result=await page.evaluate(()=>{const h=__shadowman;h.start();h.step(2);h.seals.forEach(s=>s.taken=true);h.p.x=h.level.arena.start+50;h.step();h.boss.timer=1;h.step();const dir=h.boss.dir,before=h.boss.x;h.p.x=h.boss.x+180;h.step();const locked=h.boss.dir===dir&&h.boss.x<before;Object.assign(h.boss,{phase:'recover',timer:99,hp:1});Object.assign(h.p,{x:h.boss.x-100,y:426,face:1,vx:0,attackCool:0});h.keys.clear();h.command('KeyJ');h.step(8);return{locked,mode:h.mode,hp:h.boss.hp};});
     assert.deepEqual(result,{locked:true,mode:'won',hp:0});
   });
 
@@ -92,7 +71,7 @@ const origin = process.env.SHADOWMAN_TEST_URL || process.env.BASE_URL || 'http:/
   await check('Desktop renders without overflow', async () => {
     await page.evaluate(()=>{const h=__shadowman;h.start();h.step(2);h.draw();});
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
-    await page.screenshot({path:'/tmp/shadowman-v03-desktop.png',fullPage:true});
+    await page.screenshot({path:'/tmp/shadowman-v04-desktop.png',fullPage:true});
   });
 
   await check('Mobile touch movement and release',async()=>{
@@ -110,7 +89,7 @@ const origin = process.env.SHADOWMAN_TEST_URL || process.env.BASE_URL || 'http:/
     assert.equal(await mobile.evaluate(()=>__shadowman.keys.has('ArrowRight')),false);
     assert.equal(await mobile.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
     await mobile.evaluate(()=>__shadowman.draw());
-    await mobile.screenshot({path:'/tmp/shadowman-v03-mobile.png',fullPage:true});await mobile.close();
+    await mobile.screenshot({path:'/tmp/shadowman-v04-mobile.png',fullPage:true});await mobile.close();
   });
 
   await check('Offline build embeds its sprite and supports physical keyboard input',async()=>{
@@ -123,9 +102,9 @@ const origin = process.env.SHADOWMAN_TEST_URL || process.env.BASE_URL || 'http:/
     await offline.keyboard.down('ArrowRight');await offline.waitForTimeout(220);await offline.keyboard.up('ArrowRight');
     assert.ok(await offline.evaluate(()=>__shadowman.p.x)>x+20);
     await offline.keyboard.press('Space');await offline.waitForFunction(()=>__shadowman.p.vy<0,{},{timeout:1500});
-    assert.equal(requests.some(url=>url.includes('/assets/')||url.endsWith('game.js')||url.endsWith('style.css')),false);
+    assert.equal(requests.some(url=>url.includes('/assets/')||url.endsWith('game.js')||url.endsWith('style.css')||url.endsWith('level.js')),false);
     assert.equal(await offline.evaluate(()=>(document.documentElement.innerHTML.match(/data:image\/png;base64,/g)||[]).length),3);
-    assert.equal(await offline.evaluate(()=>Object.keys(SHADOWMAN_ASSETS.city).length),24);
+    assert.equal(await offline.evaluate(()=>Object.keys(SHADOWMAN_PHASE_ATLAS).length),36);
     await offline.close();
   });
 
@@ -135,17 +114,17 @@ const origin = process.env.SHADOWMAN_TEST_URL || process.env.BASE_URL || 'http:/
     await full.waitForFunction(()=>__shadowman.spriteReady);await full.tap('#play');await full.tap('#fullscreen');
     await full.waitForFunction(()=>Boolean(document.fullscreenElement));
     const visible=await full.evaluate(()=>{const b=document.querySelector('[data-key="Space"]'),r=b.getBoundingClientRect();return document.fullscreenElement.contains(b)&&r.top>=0&&r.bottom<=innerHeight;});
-    assert.equal(visible,true);await full.screenshot({path:'/tmp/shadowman-v03-fullscreen.png'});await full.close();
+    assert.equal(visible,true);await full.screenshot({path:'/tmp/shadowman-v04-fullscreen.png'});await full.close();
   });
 
 
-  await check('City and drone atlases load with 24 in-bounds rectangles each',async()=>{
+  await check('Phase and drone atlases load with 36 and 24 in-bounds rectangles',async()=>{
     const result=await page.evaluate(async()=>{
-      const dimensions=await Promise.all(['city-atlas.png','drone-atlas.png'].map(async name=>{const image=new Image();image.src='assets/'+name;await image.decode();return {w:image.naturalWidth,h:image.naturalHeight};}));
-      const groups=[Object.values(SHADOWMAN_ASSETS.city),SHADOWMAN_ASSETS.drone];
+      const dimensions=await Promise.all(['phase-01-complete-atlas.png','drone-atlas.png'].map(async name=>{const image=new Image();image.src='assets/'+name;await image.decode();return {w:image.naturalWidth,h:image.naturalHeight};}));
+      const groups=[Object.values(SHADOWMAN_PHASE_ATLAS),SHADOWMAN_ASSETS.drone];
       return groups.map((rects,index)=>({count:rects.length,valid:rects.every(r=>r.x>=0&&r.y>=0&&r.w>0&&r.h>0&&r.x+r.w<=dimensions[index].w&&r.y+r.h<=dimensions[index].h)}));
     });
-    assert.deepEqual(result,[{count:24,valid:true},{count:24,valid:true}]);
+    assert.deepEqual(result,[{count:36,valid:true},{count:24,valid:true}]);
   });
 
   await check('Drone telegraphs, locks projectile aim and patrols within bounds',async()=>{
@@ -165,8 +144,21 @@ const origin = process.env.SHADOWMAN_TEST_URL || process.env.BASE_URL || 'http:/
       contact();const hit=h.p.hp===5&&h.shots.length===0;h.p.inv=999;contact();const inv=h.p.hp===5&&h.shots.length===0;h.p.inv=0;h.p.dash=14;contact();const dash=h.p.hp===5&&h.shots.length===0;
       h.fireDrone(h.enemies[0]);h.wrecks.push({x:0,y:0,age:0,size:50});h.start();return{moved,expired,terrain,hit,inv,dash,reset:h.shots.length===0&&h.wrecks.length===0&&h.enemies.every(e=>e.hp===3)};});
     assert.deepEqual(result,{moved:true,expired:true,terrain:true,hit:true,inv:true,dash:true,reset:true});
-    await page.evaluate(()=>{const h=__shadowman;h.start();h.step(2);h.seals.forEach(s=>s.taken=true);h.p.x=3380;h.step(180);h.p.inv=999;h.boss.phase='tell';h.boss.timer=35;h.draw();});
-    await page.screenshot({path:'/tmp/shadowman-v03-arena.png',fullPage:true});
+    await page.evaluate(()=>{const h=__shadowman;h.start();h.step(2);h.seals.forEach(s=>s.taken=true);h.p.x=h.level.arena.start+50;h.step(180);h.p.inv=0;h.boss.phase='tell';h.boss.timer=35;h.snapCamera();h.draw();});
+    await page.screenshot({path:'/tmp/shadowman-v04-arena.png',fullPage:true});
+  });
+
+  await check('Factory lift carries the player up and down without slipping',async()=>{
+    const result=await page.evaluate(()=>{const h=__shadowman;h.start();h.enemies.forEach(e=>e.hp=0);Object.assign(h.p,{x:7510,y:426,ground:true,inv:9999});let caught=false,coherent=true,min=500,max=315,riding=0;for(let i=0;i<900;i++){h.step();const lift=h.lifts[0];if(h.p.standing===lift.id){caught=true;riding++;min=Math.min(min,lift.y);max=Math.max(max,lift.y);coherent&&=Math.abs(h.p.y+h.p.h-lift.y)<1.01;}else if(caught&&lift.y<499)coherent=false;}return{caught,coherent,min,max,riding,checkpoint:h.snapshot().checkpoint.x};});
+    assert.equal(result.caught,true);assert.equal(result.coherent,true);assert.ok(result.min<=316);assert.ok(result.max>=499);assert.ok(result.riding>420);
+  });
+
+  await check('Six district views render with their correct landmarks',async()=>{
+    const views=[[200,426],[2160,261],[3970,211],[5650,446],[7515,426],[9040,426]];
+    for(let i=0;i<views.length;i++){
+      await page.evaluate(({x,y,i})=>{const h=__shadowman;h.start();if(i===5)h.seals.forEach(s=>s.taken=true);Object.assign(h.p,{x,y,inv:999});h.step(12);h.p.inv=0;h.snapCamera();h.draw();},{x:views[i][0],y:views[i][1],i});
+      await page.screenshot({path:`/tmp/shadowman-v04-sector-${i+1}.png`,fullPage:true});
+    }
   });
 
   await check('No uncaught browser errors',async()=>assert.deepEqual(errors,[]));

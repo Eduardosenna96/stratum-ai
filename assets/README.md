@@ -15,3 +15,7 @@ Personagem e universo: Eduardo Senna / Senna Comics.
 `city-atlas.png`: 1536 × 1024, 6 × 4 células de 256 px, 24 peças. Linhas: telhados/passarelas, fachadas/portas, estruturas e acessórios. `drone-atlas.png`: mesmas dimensões e células; linhas: voo, alerta, disparo/recuperação, dano/destruição. Ambos têm alpha real de 0 a 254 e foram copiados sem edição.
 
 `atlases.json` e `atlases.js` guardam limites dos objetos dentro das células. Nem toda peça é usada como superfície física: a borda horizontal azul marca plataformas com colisão. Correntes, caixas, postes, tanques e gárgulas são decoração sem colisão; escadas não foram implementadas como mecânica. Variação entre quadros ainda pode existir, pois são atlas gerados por IA.
+
+## Fase completa0.4
+
+O runtime agora usa `phase-01-complete-atlas.png` e seus36 recortes de `phase-01-atlas.js/json`. O antigo atlas24 permanece como histórico de arte. `tools/describe-phase-atlas.py` declara limites de linha irregulares, inspeciona alpha e gera só metadados. Nenhum PNG foi alterado. As peças são distribuídas em `level.js`, com marcos distintos para cada setor.

@@ -61,6 +61,6 @@
       "shadow-alcove"
     ]
   ],
-  "status": "art reference; crop bounds and collision surfaces must be authored and verified before engine import",
-  "grid_warning": "Generated placement is not a perfectly uniform grid. Do not assume automatic fixed-cell slicing."
+  "status": "source rectangles explicitly authored in phase-01-atlas.js/json and integrated in v0.4",
+  "grid_warning": "Use explicit irregular row boundaries from tools/describe-phase-atlas.py, not automatic equal-size slicing."
 }

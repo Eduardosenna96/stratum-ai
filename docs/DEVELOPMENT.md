@@ -53,3 +53,11 @@ Assets modulares da cidade substituem os blocos provisórios no plano de jogo. A
 As mesmas rotas de salto, pontos seguros e controles são preservadas. O build offline agora inclui três PNGs e o atlas de recortes. O utilitário de limites de alpha não altera imagens.
 
 Validação 0.3: 9 regras automatizadas e 18 cenários de navegador passaram. Os quatro cenários novos cobrem recortes dos atlas, drones/antecipação/mira, destruição e ciclo completo dos projéteis. Nenhum erro JavaScript foi registrado.
+
+## Fase completa 0.4
+
+O mapa de 4000 unidades foi substituído por um percurso autorado de 9600, com seis regiões. `level.js` separa geometria de mecânicas/renderização. O atlas completo de 36 peças substitui o atlas genérico anterior no runtime; as linhas irregulares usam recortes explícitos. Cada região tem marcos próprios e as passarelas têm suporte visual. A textura de alvenaria é cacheada para preservar detalhe sem esticar fachadas inteiras.
+
+Subida automática resolve degraus de até19 unidades. O elevador da fábrica percorre500↔315 e carrega o personagem enquanto ele está apoiado; saltos e colisões ainda usam a mesma simulação fixa. A ponte tem rota superior e manutenção inferior; escadas reconectam ambas. Recompensas opcionais estão nos telhados. Novos pontos seguros são ativados uma vez e preservam o ponto mais avançado durante retorno.
+
+Validação: 9 testes de mecânica, 20 no Chromium, incluindo percurso físico completo ida/volta, três chaves, elevador por900ticks, combate, projéteis, pausa, toque, tela cheia e HTML com os3PNGs embutidos. Foram inspecionadas seis capturas de setores. Um fixture antigo usava posição agora ocupada por um drone; o teste passou a usar a borda real da fase, sem mudar a engine para contornar o caso. A dificuldade da fase ainda precisa ser avaliada por jogadores; o teste de percurso desativa inimigos para medir apenas travessia.

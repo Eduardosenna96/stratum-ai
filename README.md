@@ -1,34 +1,30 @@
-# Shadowman — As sombras despertam
+# Shadowman — As sombras despertam · 0.4
 
-Jogo original de plataforma e combate de sombras de Eduardo Senna / Senna Comics. Uma fase na cidade gótica industrial do Terminal 08, com exploração vertical e um chefe. O protagonista usa a sprite sheet aprovada, com capuz negro, olhos e infinito azuis. Não usa espada.
+Jogo original de plataforma e poderes de sombra, de Eduardo Senna / Senna Comics.
 
-## Jogar
+**Jogar:** https://eduardosenna96.github.io/stratum-ai/?v=0.4
 
-Se baixou o código pelo GitHub, extraia o ZIP e abra **`index.html`**. Mantenha as pastas `assets`, os scripts e o CSS juntos.
-
-Para a distribuição em arquivo único, abra `dist/Shadowman.html` no navegador. O arquivo contém a arte e não precisa de rede, Node ou instalação. Para regenerá-lo: `npm run build` (Node.js 18+).
-
-Para desenvolver e jogar pelo servidor local:
-
-```sh
-npm start
-```
-
-Porta padrão 3000; `PORT` permite escolher outra. Não é necessário executar `npm install`. Servidor local não constitui publicação pública.
+A fase 1 agora conecta seis regiões: Cais das Sombras, Rua dos Lampiões, Telhados do Relógio, Ponte dos Ecos, Pátio das Máquinas e Terminal 08. São 9600 unidades de percurso com ruas, telhados, manutenção do canal, elevador, três fragmentos e um chefe. O atlas ampliado de 36 peças organiza a arquitetura de cada setor. Drones Órbita anunciam seus disparos; o Vigia anuncia a investida.
 
 ## Controles
 
 | Ação | Tecla |
 |---|---|
 | Andar | ← → ou A / D |
-| Saltar | Espaço, W ou ↑; solte cedo para saltar mais baixo |
+| Saltar | Espaço, W ou ↑; solte cedo para salto menor |
 | Conjurar sombras | J |
 | Deslocamento sombrio | K |
 | Pausar / continuar | P ou Escape |
 
-Em telas de toque, os botões aparecem abaixo do jogo; tela cheia é opcional. Recupere os três fragmentos nos telhados e enfrente o Vigia. Fragmentos ativam pontos seguros e recuperam uma vida. Morrer permite continuar com os fragmentos já coletados; recomeçar a fase limpa o progresso. O som começa desligado. Não há salvamento após fechar o navegador.
+Em telas de toque, os botões aparecem abaixo do jogo; a opção de tela cheia mantém os controles visíveis. Colete os fragmentos no pátio, sob a ponte e no gerador. Escadas são percorridas automaticamente ao andar. Para alcançar o gerador, suba no elevador e salte para a plataforma à direita. Os caminhos superiores e inferiores se reencontram. Fragmentos e pontos seguros recuperam uma vida; ao morrer é possível continuar com o progresso já coletado. O som começa desligado. Não há salvamento após fechar o navegador.
 
-## Verificar e melhorar
+## HTML independente
+
+`npm run build` cria `dist/Shadowman.html`, com CSS, JavaScript, dados da fase, recortes e três PNGs embutidos. Abra esse arquivo no navegador, sem servidor ou rede. O ZIP do código também funciona extraído: abra `index.html` mantendo scripts e pasta assets juntos.
+
+Para desenvolver, use Node.js 18+ e `npm start` (porta 3000; `PORT` opcional). Não há dependências npm de execução para instalar.
+
+## Verificação
 
 ```sh
 npm test
@@ -36,20 +32,17 @@ npm run build
 npm run test:browser
 ```
 
-O teste de navegador requer o servidor em execução, Playwright e Chromium. Ambos já estão presentes na máquina cloud; a resolução do runner tenta a instalação local e o runtime cloud. `CHROMIUM_PATH` e `BASE_URL` permitem outros caminhos/portas. Testes usam hooks disponíveis somente com `?test=1`.
+Os testes do navegador exigem servidor em execução, Playwright e Chromium, já disponíveis no runtime cloud. `CHROMIUM_PATH` e `BASE_URL` permitem outros caminhos/portas. Há **9 testes de mecânica e 20 cenários no navegador**. O percurso completo está em `tests/phase-route.cjs`: faz ida e volta sem teleporte, pega os três fragmentos e usa o elevador. Nesse teste, inimigos são desligados para isolar geometria; combate e projéteis têm verificações próprias.
 
-`npm run watch` verifica as regras e refaz o HTML ao editar fontes, sem chamadas de IA e sem gastar tokens. O fluxo para o agente está em [skills/shadowman-development/SKILL.md](skills/shadowman-development/SKILL.md).
+`npm run watch` roda regras e recompila ao editar, sem chamadas de IA. O fluxo econômico do agente está em `skills/shadowman-development/SKILL.md`.
 
-Veja [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md) para decisões e próximos passos, e [assets/README.md](assets/README.md) para limites da animação. Esta é uma fase de protótipo, não um jogo comercial final. A arte do herói foi gerada com referência à capa fornecida pelo criador.
+## Arquivos principais
 
-## Verificação desta versão
+- `level.js`: geometria, setores, rotas, pontos seguros, elevador e encontros.
+- `game.js`: física, combate, estado e renderização.
+- `assets/phase-01-complete-atlas.png`: arquitetura aprovada; original preservado.
+- `assets/phase-01-atlas.js/json`: recortes explícitos para as linhas irregulares do atlas.
+- `docs/phase-01/full-map.png`: composição visual que orienta o percurso.
+- `docs/DEVELOPMENT.md`: decisões e limites.
 
-9 testes de regras e 18 cenários de navegador passaram. O HTML independente foi carregado via HTTP com o sprite embutido e sem requests externos de assets. Não houve erros JavaScript. O watcher também foi exercitado na inicialização e após uma alteração local. O workflow de GitHub Actions testa e empacota; o QA do navegador foi executado no ambiente cloud.
-
-## Reconstrução 0.3
-
-A cidade agora usa `assets/city-atlas.png` (24 peças) e os inimigos usam `assets/drone-atlas.png` (24 quadros): voo, alerta, tiro e destruição. O Vigia é uma variante ampliada do drone. O fundo distante continua procedural; telhados, fachadas, janelas e elementos das docas usam o atlas. Tiros têm mira anunciada, trajetória fixa, recarga e colisão com terreno. As condições de vitória, pontos seguros e controles foram preservadas.
-
-Os dois atlas originais foram preservados. `tools/describe-atlases.py` apenas descreve limites de alpha e gera `assets/atlases.js/json` para recortes no Canvas, sem alterar a arte; só esse utilitário opcional usa Pillow. O build HTML embute os três PNGs e os metadados, sem requests externos.
-
-Jogue a versão publicada em https://eduardosenna96.github.io/stratum-ai/. A atualização da branch `gh-pages` dispara a publicação automática; o script `tools/publish-pages.cjs` usa esse fluxo sem API adicional.
+O fundo distante permanece procedural; a cidade próxima usa os novos assets. Personagem, mapa e drones usam arte gerada com a referência fornecida pelo criador. Esta é uma fase de protótipo, não um jogo comercial final. O build HTML foi validado via HTTP e sem requests externos de assets.
