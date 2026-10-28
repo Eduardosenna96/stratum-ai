@@ -1,0 +1,4 @@
+const http=require('node:http'),fs=require('node:fs'),path=require('node:path');
+const root=__dirname;
+const server=http.createServer((req,res)=>{let p;try{p=decodeURIComponent(new URL(req.url,'http://localhost').pathname);}catch{res.writeHead(400);return res.end();}const file=path.resolve(root,'.'+(p==='/'?'/index.html':p));if(!file.startsWith(root+path.sep)||p.includes('/.')){res.writeHead(403);return res.end();}fs.readFile(file,(err,data)=>{if(err){res.writeHead(404);return res.end('Não encontrado');}res.setHeader('Content-Type',({html:'text/html; charset=utf-8',js:'text/javascript; charset=utf-8',css:'text/css',json:'application/json',png:'image/png'})[path.extname(file).slice(1)]||'application/octet-stream');res.end(data);});});
+server.on('error',e=>{console.error('Falha ao iniciar servidor:',e.message);process.exitCode=1;});server.listen(Number(process.env.PORT)||3000,'0.0.0.0',()=>console.log('Shadowman: porta '+(process.env.PORT||3000)));

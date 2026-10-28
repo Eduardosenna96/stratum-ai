@@ -1,0 +1,22 @@
+name: Shadowman — regras e build offline
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm test
+      - run: npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Shadowman-jogavel
+          path: |
+            dist/Shadowman.html
+            dist/SHA256SUMS
