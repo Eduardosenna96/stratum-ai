@@ -1,12 +1,12 @@
-# Shadowman — Cidade Interligada · protótipo 0.6
+# Shadowman — Cidade Interligada · protótipo 0.7
 
-**Jogar:** https://eduardosenna96.github.io/stratum-ai/?v=0.6
+**Jogar:** https://eduardosenna96.github.io/stratum-ai/?v=0.7
 
 Novo modelo de exploração em oito salas conectadas, com poderes desbloqueáveis, retornos, atalhos e progresso salvo neste navegador. E entra/interage; Espaço pula; setas/A D movem; ↑ ↓ usam escadas; J ataca; K usa Passo após conquistá-lo; M abre mapa; P pausa. O objetivo inicial é encontrar o Passo no Arquivo e voltar à Praça para liberar o Canal.
 
-Ainda usa os seis cenários aprovados, com interiores reaproveitados; não é a cidade final de24salas nem uma reprodução exata do mockup. Tentáculo e Névoa são requisitos de travessias entre salas neste teste; as animações próprias ainda serão integradas.
+Agora usa três cenários individuais de1672×941, incluindo a composição do mockup de gameplay aprovado, em oito salas. A proporção16:9 é preservada e o canvas respeita DPR até2. Ainda não é a cidade final de24salas; interiores e exteriores são compartilhados entre salas. Tentáculo e Névoa são requisitos de travessias entre salas neste teste; as animações próprias ainda serão integradas.
 
-Fonte: prototype/index.html e prototype/world.js. Build independente: `npm run build:city` → dist/Shadowman-Cidade.html. Testes: `npm run test:city` com servidor local. Publicar: `node tools/publish-pages.cjs --city`. Estrutura futura: docs/world/STRUCTURE.md.
+Fonte: prototype/index.html, prototype/world.js e prototype/city-level.js. O site usa HTML leve, scripts e imagens separados com hashes; o HTML offline continua disponível pelo build. Build independente: `npm run build:city` → dist/Shadowman-Cidade.html. Testes: `npm run test:city` com servidor local. Publicar: `node tools/publish-pages.cjs --city`. Estrutura futura: docs/world/STRUCTURE.md.
 
 ---
 

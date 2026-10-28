@@ -18,3 +18,9 @@ A câmera enquadra uma sala por vez. As alturas globais das salas são deslocada
 6. Terminal: ambiente interior com arco enorme, piso amplo e fenda azul à direita. Não inserir skyline urbano neste quadro.
 
 Antes de publicar: verificar seis screenshots contra a referência, ajustar botas aos pisos, testar ida/volta, chaves, escadas, elevador e combate. Não esconder divergência visual com uma contagem de testes. A arte limpa é uma edição assistida por IA, não uma cópia pixel a pixel; alterações residuais devem ser examinadas.
+
+## Nova referência de gameplay 0.7
+
+O usuário rejeitou a ampliação dos quadros na0.6 e escolheu a imagem individual de gameplay como aparência de referência. A0.7 usa assets/city-streets-hd.png, edição dessa imagem removendo HUD/personagens, e dois ambientes complementares: city-canal-hd.png e city-terminal-hd.png. Todos1672×941, proporção16:9. A identidade da prancha continua; as coordenadas atuais pertencem a prototype/city-level.js, traçadas nas novas artes. Os seis recortes antigos só se aplicam ao modelo anterior.
+
+Conferir captura real com a imagem de gameplay: guindaste à esquerda, armazém no meio, fonte/arco à direita, escadaria e relógio; personagem de capuz com infinito azul. Não confundir um mockup gerado com screenshot funcional. Ainda há oito salas dividindo três ambientes e as animações dos novos poderes não estão finalizadas. Resolução maior e DPR não criam detalhe acima do que existe nas artes.

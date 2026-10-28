@@ -11,3 +11,5 @@ Registre mudanças e limites em `docs/DEVELOPMENT.md`. Não prometa publicação
 O mapa completo é autorado em `level.js`. Mudanças em rotas exigem o teste de percurso `tests/phase-route.cjs`, incluindo ida e volta, fragmentos e elevador. Use `level.scenes[].crop` para enquadrar os cenários atuais. O atlas modular anterior não substitui a prancha.
 
 Antes de editar ou publicar o visual, leia `docs/phase-01/FIDELITY.md`. Compare cada sala com `docs/phase-01/full-map.png`; testes mecânicos não demonstram fidelidade visual. A versão0.5 usa os quadros limpos e câmera por sala.
+
+O protótipo público atual é0.7: prototype/index.html + world.js + city-level.js. A referência mais recente do usuário é o mockup individual de gameplay; assets/city-*-hd.png contém três cenários1672×941. Use npm run build:city, tests/city-build.cjs e npm run test:city para esse modelo. O build público separa scripts/PNGs com hash; preserve também HTML offline. Falha de imagem opcional não deve bloquear play; erro essencial precisa permanecer visível e permitir retry. Não volte a ampliar os seis recortes pequenos. As regras de level.js acima descrevem o modelo anterior.

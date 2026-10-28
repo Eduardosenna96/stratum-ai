@@ -23,3 +23,7 @@ O runtime agora usa `phase-01-complete-atlas.png` e seus36 recortes de `phase-01
 ## Correção0.5 — cenários da prancha
 
 `storyboard-clean.png` é uma edição da prancha aprovada, preservando seus seis ambientes enquanto retira títulos, setas e personagens estáticos. O runtime usa recortes explícitos em `level.js`; nenhuma skyline procedural substitui os quadros. O atlas modular permanece como material de produção e histórico, mas não é a base visual atual. O elevador dinâmico usa um recorte da própria prancha. Os PNGs de herói e drones continuam os aprovados anteriormente.
+
+## Cenários individuais0.7
+
+city-streets-hd.png, city-canal-hd.png e city-terminal-hd.png são cenas inteiras1672×941, geradas/editadas a partir do mockup aprovado. Ruas mantém sua composição sem HUD e atores estáticos; as outras duas são ambientes complementares. O runtime desenha atores e HUD separados. As oito salas compartilham esses três ambientes. Não são assets4K nem tiles regulares. prototype/city-level.js registra superfícies na imagem; canvas usa proporção16:9 e resolução interna ajustada ao dispositivo atéDPR2.

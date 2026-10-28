@@ -1,4 +1,4 @@
-/* Publish only the self-contained game. Never force-push or expose credentials. */
+/* Publish the reviewed static delivery. Never force-push or expose credentials. */
 const fs=require('node:fs'),path=require('node:path'),{execFileSync}=require('node:child_process');
 const root=path.resolve(__dirname,'..');
 const run=(cmd,args,input)=>execFileSync(cmd,args,{cwd:root,input,encoding:'utf8',stdio:['pipe','pipe','pipe']}).trim();
@@ -7,10 +7,20 @@ const api=(method,endpoint,body)=>JSON.parse(run('gh',['api','--method',method,e
 function prepare(){
  const city=process.argv.includes('--city');
  console.log(run(process.execPath,[city?'tools/build-city.cjs':'tools/build.cjs']));
- const html=fs.readFileSync(path.join(root,process.argv.includes('--city')?'dist/Shadowman-Cidade.html':'dist/Shadowman.html'));
- const blob=run('git',['hash-object','-w','--stdin'],html);
  const empty=run('git',['hash-object','-w','--stdin'],'');
- const tree=run('git',['mktree'],`100644 blob ${empty}\t.nojekyll\n100644 blob ${blob}\tindex.html\n`);
+ const blob=data=>run('git',['hash-object','-w','--stdin'],data);
+ function directoryTree(dir,top=false){
+  const entries=fs.readdirSync(dir,{withFileTypes:true}).map(entry=>{
+   const file=path.join(dir,entry.name);
+   if(entry.isDirectory())return {name:entry.name,directory:true,line:`040000 tree ${directoryTree(file)}\t${entry.name}\n`};
+   if(!entry.isFile())throw Error('Arquivo de publicação inválido: '+entry.name);
+   return {name:entry.name,directory:false,line:`100644 blob ${blob(fs.readFileSync(file))}\t${entry.name}\n`};
+  });
+  if(top)entries.push({name:'.nojekyll',directory:false,line:`100644 blob ${empty}\t.nojekyll\n`});
+  entries.sort((a,b)=>Buffer.compare(Buffer.from(a.name+(a.directory?'/':'')),Buffer.from(b.name+(b.directory?'/':''))));
+  return run('git',['mktree'],entries.map(e=>e.line).join(''));
+ }
+ const tree=city?directoryTree(path.join(root,'dist/city-site'),true):run('git',['mktree'],`100644 blob ${empty}\t.nojekyll\n100644 blob ${blob(fs.readFileSync(path.join(root,'dist/Shadowman.html')))}\tindex.html\n`);
  let parent='';try{parent=git('rev-parse','--verify','refs/heads/gh-pages');}catch{}
  let sha;if(parent&&git('rev-parse',`${parent}^{tree}`)===tree)sha=parent;
  else sha=run('git',['commit-tree',tree,...(parent?['-p',parent]:[]),'-m','Publish Shadowman static game']);
