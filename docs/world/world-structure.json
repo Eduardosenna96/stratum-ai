@@ -1,0 +1,468 @@
+{
+  "status": "projeto, não implementado no jogo publicado",
+  "start": "D1",
+  "goal": "T4",
+  "rooms": [
+    {
+      "id": "D1",
+      "name": "Desembarque",
+      "district": "Cais",
+      "reward": null,
+      "save": true,
+      "screens": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": "D2",
+      "name": "Armazém",
+      "district": "Cais",
+      "reward": null,
+      "save": false,
+      "screens": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": "D3",
+      "name": "Guindaste",
+      "district": "Cais",
+      "reward": null,
+      "save": false,
+      "screens": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": "D4",
+      "name": "Alfândega",
+      "district": "Cais",
+      "reward": null,
+      "save": false,
+      "screens": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": "S1",
+      "name": "Praça da Fonte",
+      "district": "Ruas",
+      "reward": null,
+      "save": true,
+      "screens": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": "S2",
+      "name": "Mercado",
+      "district": "Ruas",
+      "reward": null,
+      "save": false,
+      "screens": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": "S3",
+      "name": "Arquivo",
+      "district": "Ruas",
+      "reward": null,
+      "save": false,
+      "screens": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": "S4",
+      "name": "Santuário do Passo",
+      "district": "Ruas",
+      "reward": "passo",
+      "save": false,
+      "screens": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": "R1",
+      "name": "Escadaria do Relógio",
+      "district": "Telhados",
+      "reward": null,
+      "save": false,
+      "screens": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": "R2",
+      "name": "Torre do Relógio",
+      "district": "Telhados",
+      "reward": null,
+      "save": false,
+      "screens": [
+        2,
+        2
+      ]
+    },
+    {
+      "id": "R3",
+      "name": "Jardim Suspenso",
+      "district": "Telhados",
+      "reward": null,
+      "save": false,
+      "screens": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": "R4",
+      "name": "Campanário",
+      "district": "Telhados",
+      "reward": "selo_torre",
+      "save": false,
+      "screens": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": "C1",
+      "name": "Ponte dos Ecos",
+      "district": "Canal",
+      "reward": null,
+      "save": false,
+      "screens": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": "C2",
+      "name": "Galeria de Manutenção",
+      "district": "Canal",
+      "reward": null,
+      "save": true,
+      "screens": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": "C3",
+      "name": "Cisterna",
+      "district": "Canal",
+      "reward": null,
+      "save": false,
+      "screens": [
+        2,
+        2
+      ]
+    },
+    {
+      "id": "C4",
+      "name": "Santuário do Laço",
+      "district": "Canal",
+      "reward": "tentaculo",
+      "save": false,
+      "screens": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": "F1",
+      "name": "Pátio Industrial",
+      "district": "Fábrica",
+      "reward": null,
+      "save": false,
+      "screens": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": "F2",
+      "name": "Poço do Elevador",
+      "district": "Fábrica",
+      "reward": null,
+      "save": true,
+      "screens": [
+        2,
+        2
+      ]
+    },
+    {
+      "id": "F3",
+      "name": "Reator",
+      "district": "Fábrica",
+      "reward": "selo_reator",
+      "save": false,
+      "screens": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": "F4",
+      "name": "Câmara da Névoa",
+      "district": "Fábrica",
+      "reward": "nevoa",
+      "save": false,
+      "screens": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": "T1",
+      "name": "Entrada do Terminal",
+      "district": "Terminal",
+      "reward": null,
+      "save": false,
+      "screens": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": "T2",
+      "name": "Sala dos Sensores",
+      "district": "Terminal",
+      "reward": null,
+      "save": false,
+      "screens": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": "T3",
+      "name": "Antecâmara",
+      "district": "Terminal",
+      "reward": null,
+      "save": true,
+      "screens": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": "T4",
+      "name": "Coração do Terminal",
+      "district": "Terminal",
+      "reward": null,
+      "save": false,
+      "screens": [
+        2,
+        1
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "a": "D1",
+      "b": "D2",
+      "requires": [],
+      "kind": "passagem",
+      "bidirectional": true
+    },
+    {
+      "a": "D2",
+      "b": "D3",
+      "requires": [],
+      "kind": "passagem",
+      "bidirectional": true
+    },
+    {
+      "a": "D3",
+      "b": "D4",
+      "requires": [],
+      "kind": "passagem",
+      "bidirectional": true
+    },
+    {
+      "a": "D4",
+      "b": "S1",
+      "requires": [],
+      "kind": "passagem",
+      "bidirectional": true
+    },
+    {
+      "a": "S1",
+      "b": "S2",
+      "requires": [],
+      "kind": "passagem",
+      "bidirectional": true
+    },
+    {
+      "a": "S2",
+      "b": "S3",
+      "requires": [],
+      "kind": "passagem",
+      "bidirectional": true
+    },
+    {
+      "a": "S3",
+      "b": "S4",
+      "requires": [],
+      "kind": "passagem",
+      "bidirectional": true
+    },
+    {
+      "a": "S1",
+      "b": "R1",
+      "requires": [],
+      "kind": "passagem",
+      "bidirectional": true
+    },
+    {
+      "a": "R1",
+      "b": "R2",
+      "requires": [],
+      "kind": "passagem",
+      "bidirectional": true
+    },
+    {
+      "a": "S2",
+      "b": "C1",
+      "requires": [],
+      "kind": "passagem",
+      "bidirectional": true
+    },
+    {
+      "a": "C1",
+      "b": "C2",
+      "requires": [],
+      "kind": "passagem",
+      "bidirectional": true
+    },
+    {
+      "a": "C2",
+      "b": "C3",
+      "requires": [],
+      "kind": "passagem",
+      "bidirectional": true
+    },
+    {
+      "a": "C3",
+      "b": "C4",
+      "requires": [],
+      "kind": "passagem",
+      "bidirectional": true
+    },
+    {
+      "a": "F1",
+      "b": "F2",
+      "requires": [],
+      "kind": "passagem",
+      "bidirectional": true
+    },
+    {
+      "a": "F2",
+      "b": "F3",
+      "requires": [],
+      "kind": "passagem",
+      "bidirectional": true
+    },
+    {
+      "a": "F3",
+      "b": "F4",
+      "requires": [],
+      "kind": "passagem",
+      "bidirectional": true
+    },
+    {
+      "a": "T1",
+      "b": "T2",
+      "requires": [],
+      "kind": "passagem",
+      "bidirectional": true
+    },
+    {
+      "a": "T2",
+      "b": "T3",
+      "requires": [],
+      "kind": "passagem",
+      "bidirectional": true
+    },
+    {
+      "a": "T3",
+      "b": "T4",
+      "requires": [],
+      "kind": "passagem",
+      "bidirectional": true
+    },
+    {
+      "a": "R2",
+      "b": "R3",
+      "requires": [
+        "passo"
+      ],
+      "kind": "vão de sombra",
+      "bidirectional": true
+    },
+    {
+      "a": "R3",
+      "b": "R4",
+      "requires": [
+        "tentaculo"
+      ],
+      "kind": "âncoras altas",
+      "bidirectional": true
+    },
+    {
+      "a": "C2",
+      "b": "F1",
+      "requires": [
+        "passo"
+      ],
+      "kind": "comporta",
+      "bidirectional": true
+    },
+    {
+      "a": "F4",
+      "b": "T1",
+      "requires": [
+        "nevoa",
+        "selo_torre",
+        "selo_reator"
+      ],
+      "kind": "fresta e trava do terminal",
+      "bidirectional": true
+    },
+    {
+      "a": "D2",
+      "b": "C2",
+      "requires": [],
+      "kind": "atalho com alavanca do lado C2",
+      "bidirectional": true,
+      "unlockFrom": "C2"
+    },
+    {
+      "a": "R3",
+      "b": "F2",
+      "requires": [],
+      "kind": "atalho com alavanca do lado F2",
+      "bidirectional": true,
+      "unlockFrom": "F2"
+    },
+    {
+      "a": "S3",
+      "b": "F1",
+      "requires": [],
+      "kind": "atalho com alavanca do lado F1",
+      "bidirectional": true,
+      "unlockFrom": "F1"
+    }
+  ]
+}

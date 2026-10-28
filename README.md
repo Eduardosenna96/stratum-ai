@@ -1,30 +1,43 @@
-# Shadowman — As sombras despertam · 0.4
+# Shadowman — Cidade Interligada · protótipo 0.6
 
-Jogo original de plataforma e poderes de sombra, de Eduardo Senna / Senna Comics.
+**Jogar:** https://eduardosenna96.github.io/stratum-ai/?v=0.6
 
-**Jogar:** https://eduardosenna96.github.io/stratum-ai/?v=0.4
+Novo modelo de exploração em oito salas conectadas, com poderes desbloqueáveis, retornos, atalhos e progresso salvo neste navegador. E entra/interage; Espaço pula; setas/A D movem; ↑ ↓ usam escadas; J ataca; K usa Passo após conquistá-lo; M abre mapa; P pausa. O objetivo inicial é encontrar o Passo no Arquivo e voltar à Praça para liberar o Canal.
 
-A fase 1 agora conecta seis regiões: Cais das Sombras, Rua dos Lampiões, Telhados do Relógio, Ponte dos Ecos, Pátio das Máquinas e Terminal 08. São 9600 unidades de percurso com ruas, telhados, manutenção do canal, elevador, três fragmentos e um chefe. O atlas ampliado de 36 peças organiza a arquitetura de cada setor. Drones Órbita anunciam seus disparos; o Vigia anuncia a investida.
+Ainda usa os seis cenários aprovados, com interiores reaproveitados; não é a cidade final de24salas nem uma reprodução exata do mockup. Tentáculo e Névoa são requisitos de travessias entre salas neste teste; as animações próprias ainda serão integradas.
+
+Fonte: prototype/index.html e prototype/world.js. Build independente: `npm run build:city` → dist/Shadowman-Cidade.html. Testes: `npm run test:city` com servidor local. Publicar: `node tools/publish-pages.cjs --city`. Estrutura futura: docs/world/STRUCTURE.md.
+
+---
+
+# Modelo anterior — As sombras despertam · 0.5
+
+Jogo de plataforma e poderes de sombra, de Eduardo Senna / Senna Comics.
+
+Código do modelo anterior preservado em index.html, game.js e level.js. A URL pública agora serve o novo protótipo; o parâmetro de versão não seleciona versões antigas.
+
+Esta correção utiliza a própria arte da prancha aprovada como seis cenários completos: Cais, Ruas, Telhados, Canal, Fábrica e Terminal08. Pisos, escadas e plataformas foram traçados sobre a imagem. A câmera mostra um ambiente por vez; as alturas globais de entrada/saída são alinhadas para manter o personagem nas mesmas coordenadas físicas durante as transições. O herói tem cerca de5% da largura da tela, conforme a referência.
 
 ## Controles
 
 | Ação | Tecla |
 |---|---|
 | Andar | ← → ou A / D |
-| Saltar | Espaço, W ou ↑; solte cedo para salto menor |
+| Saltar | Espaço; solte cedo para salto menor |
+| Escalar escadas/correntes | ↑ ↓ ou W / S |
 | Conjurar sombras | J |
 | Deslocamento sombrio | K |
 | Pausar / continuar | P ou Escape |
 
-Em telas de toque, os botões aparecem abaixo do jogo; a opção de tela cheia mantém os controles visíveis. Colete os fragmentos no pátio, sob a ponte e no gerador. Escadas são percorridas automaticamente ao andar. Para alcançar o gerador, suba no elevador e salte para a plataforma à direita. Os caminhos superiores e inferiores se reencontram. Fragmentos e pontos seguros recuperam uma vida; ao morrer é possível continuar com o progresso já coletado. O som começa desligado. Não há salvamento após fechar o navegador.
+↑ também salta quando não há escada próxima. Os controles de toque incluem subir/descer. Colete os fragmentos junto à fonte, na plataforma sob a ponte e diante do reator. Para sair do canal, volte à escada à esquerda. Na fábrica, o elevador liga o andar baixo ao superior; a escada da passarela permite explorar a parte mais alta. O Vigia paira, anuncia o mergulho, avança em direção fixa e fica vulnerável ao pousar.
 
-## HTML independente
+Fragmentos e pontos seguros recuperam vida. Ao morrer é possível continuar com os fragmentos coletados. Não há salvamento após fechar o navegador. Som é opcional e começa desligado.
 
-`npm run build` cria `dist/Shadowman.html`, com CSS, JavaScript, dados da fase, recortes e três PNGs embutidos. Abra esse arquivo no navegador, sem servidor ou rede. O ZIP do código também funciona extraído: abra `index.html` mantendo scripts e pasta assets juntos.
+## HTML e desenvolvimento
 
-Para desenvolver, use Node.js 18+ e `npm start` (porta 3000; `PORT` opcional). Não há dependências npm de execução para instalar.
+`npm run build` cria `dist/Shadowman.html` com imagem, código e dados embutidos; não há requests externos de assets. O arquivo funciona sem servidor ou instalação. Se baixar o ZIP de fontes, extraia tudo e abra `index.html` mantendo os arquivos juntos.
 
-## Verificação
+Para desenvolver: Node.js18+; `npm start` usa a porta3000 (`PORT` opcional). Não é necessário instalar dependências de runtime.
 
 ```sh
 npm test
@@ -32,17 +45,15 @@ npm run build
 npm run test:browser
 ```
 
-Os testes do navegador exigem servidor em execução, Playwright e Chromium, já disponíveis no runtime cloud. `CHROMIUM_PATH` e `BASE_URL` permitem outros caminhos/portas. Há **9 testes de mecânica e 20 cenários no navegador**. O percurso completo está em `tests/phase-route.cjs`: faz ida e volta sem teleporte, pega os três fragmentos e usa o elevador. Nesse teste, inimigos são desligados para isolar geometria; combate e projéteis têm verificações próprias.
+Os testes de navegador usam Playwright/Chromium disponíveis na máquina cloud. `CHROMIUM_PATH` e `BASE_URL` permitem outras instalações. `tests/phase-route.cjs` verifica ida/volta, fragmentos, escadas e elevador com inimigos desativados para isolar travessia; combate tem testes próprios. `npm run watch` executa regras e build ao editar sem chamadas de IA.
 
-`npm run watch` roda regras e recompila ao editar, sem chamadas de IA. O fluxo econômico do agente está em `skills/shadowman-development/SKILL.md`.
+## Referências e fontes
 
-## Arquivos principais
+- `docs/phase-01/full-map.png`: prancha aprovada.
+- `assets/storyboard-clean.png`: edição da prancha para cenários, sem anotações.
+- `docs/phase-01/FIDELITY.md`: critérios obrigatórios de comparação visual.
+- `level.js`: recortes, pisos, escadas, elevador e encontros.
+- `tools/trace-scenes.html`: ferramenta de inspeção com coordenadas e colisões.
+- `skills/shadowman-development/SKILL.md`: fluxo econômico de continuidade.
 
-- `level.js`: geometria, setores, rotas, pontos seguros, elevador e encontros.
-- `game.js`: física, combate, estado e renderização.
-- `assets/phase-01-complete-atlas.png`: arquitetura aprovada; original preservado.
-- `assets/phase-01-atlas.js/json`: recortes explícitos para as linhas irregulares do atlas.
-- `docs/phase-01/full-map.png`: composição visual que orienta o percurso.
-- `docs/DEVELOPMENT.md`: decisões e limites.
-
-O fundo distante permanece procedural; a cidade próxima usa os novos assets. Personagem, mapa e drones usam arte gerada com a referência fornecida pelo criador. Esta é uma fase de protótipo, não um jogo comercial final. O build HTML foi validado via HTTP e sem requests externos de assets.
+A versão0.4 foi substituída por não reproduzir a composição aprovada. A correção0.5 ainda é um protótipo: arte limpa por IA pode ter diferenças locais da prancha original e a dificuldade precisa de avaliação com jogadores. Não confundir testes de mecânica com comprovação de fidelidade visual.

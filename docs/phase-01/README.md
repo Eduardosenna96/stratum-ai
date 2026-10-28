@@ -21,3 +21,9 @@ O percurso vai do Cais das Sombras ao Terminal 08, passando por Rua dos Lampiõe
 ## Validação
 
 9 testes de mecânica e20 cenários no Chromium passaram. A suíte fez ida e volta, pegou3 fragmentos e chegou à arena em4838 ticks físicos, sem teleporte ou respawn. Inimigos foram desligados nesse teste para isolar geometria; combate e projéteis têm verificações próprias. O elevador manteve apoio em900 ticks de subida/descida. Foram inspecionadas capturas dos seis setores.
+
+## Correção de fidelidade0.5
+
+A montagem0.4 foi rejeitada por desviar da composição da prancha. O runtime0.5 mostra os seis ambientes inteiros de `assets/storyboard-clean.png`, com pisos/escadas traçados em coordenadas da imagem e escala do personagem corrigida. A câmera muda de sala e altura de enquadramento; o personagem não é teleportado. As saídas/entradas têm a mesma altura física global.
+
+O mapa atual tem7200 unidades horizontais e coordenadas verticais globais ajustadas por ambiente. Os9600 da versão anterior eram uma adaptação que não preservava o quadro; não usá-los como restrição visual. O trajeto foi validado em3876ticks de ida/volta com3fragmentos, escada e elevador, sem respawn; inimigos são desligados nesse teste para isolar geometria. A revisão visual segue `FIDELITY.md`.

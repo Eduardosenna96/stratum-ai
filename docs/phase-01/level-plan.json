@@ -1,15 +1,15 @@
 {
   "name": "As sombras despertam — Terminal 08",
-  "status": "implemented in v0.4; geometry, collectibles and lift validated",
+  "status": "v0.5 correction: direct storyboard scenes; visual review and gameplay validation are separate",
   "route_preference": "mixed streets, rooftops and docks",
-  "camera": "side-scrolling, 1200x600 viewport",
+  "camera": "fixed composition per approved panel; physical entry/exit heights aligned globally",
   "target_duration_minutes": [
     3,
     6
   ],
   "world_units": {
-    "width": 9600,
-    "height": 600
+    "width": 7200,
+    "height": "per-scene offsets; each camera view1200x600"
   },
   "principles": [
     "Architecture must explain each walkable surface; no arbitrary floating blocks.",
@@ -151,15 +151,21 @@
   "reference_art": {
     "atlas": "assets/phase-01-complete-atlas.png",
     "composition": "docs/phase-01/full-map.png",
-    "note": "The six numbered panels are a folded overview of one long level, not a literal shared collision grid."
+    "note": "The six numbered panels are a folded overview of one long level, not a literal shared collision grid.",
+    "runtime_background": "assets/storyboard-clean.png"
   },
-  "geometry_source": "level.js",
-  "validation": {
+  "geometry_source": "level.js, native storyboard coordinates mapped through each scene crop",
+  "previous_validation_v04": {
     "mechanics": 9,
     "browser_scenarios": 20,
     "route_ticks": 4838,
     "route_scope": "six sectors, 3 fragments, lift, boss arena and return to start without teleport or respawn; enemies disabled to isolate geometry",
     "lift_ticks": 900,
     "lift_scope": "continuous ascent and descent while supporting the player"
+  },
+  "validation_v05": {
+    "route_ticks": 3876,
+    "route_scope": "round trip, 3 fragments, ladders and lift, no respawn; enemies disabled for geometry",
+    "visual_scope": "compare all6 scenes against approved full-map.png and check foot alignment separately"
   }
 }

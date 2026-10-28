@@ -5,8 +5,9 @@ const run=(cmd,args,input)=>execFileSync(cmd,args,{cwd:root,input,encoding:'utf8
 const git=(...args)=>run('git',args);
 const api=(method,endpoint,body)=>JSON.parse(run('gh',['api','--method',method,endpoint,...(body?['--input','-']:[])],body?JSON.stringify(body):undefined));
 function prepare(){
- console.log(run(process.execPath,['tools/build.cjs']));
- const html=fs.readFileSync(path.join(root,'dist/Shadowman.html'));
+ const city=process.argv.includes('--city');
+ console.log(run(process.execPath,[city?'tools/build-city.cjs':'tools/build.cjs']));
+ const html=fs.readFileSync(path.join(root,process.argv.includes('--city')?'dist/Shadowman-Cidade.html':'dist/Shadowman.html'));
  const blob=run('git',['hash-object','-w','--stdin'],html);
  const empty=run('git',['hash-object','-w','--stdin'],'');
  const tree=run('git',['mktree'],`100644 blob ${empty}\t.nojekyll\n100644 blob ${blob}\tindex.html\n`);

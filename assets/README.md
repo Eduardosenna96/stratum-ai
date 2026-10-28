@@ -19,3 +19,7 @@ Personagem e universo: Eduardo Senna / Senna Comics.
 ## Fase completa0.4
 
 O runtime agora usa `phase-01-complete-atlas.png` e seus36 recortes de `phase-01-atlas.js/json`. O antigo atlas24 permanece como histórico de arte. `tools/describe-phase-atlas.py` declara limites de linha irregulares, inspeciona alpha e gera só metadados. Nenhum PNG foi alterado. As peças são distribuídas em `level.js`, com marcos distintos para cada setor.
+
+## Correção0.5 — cenários da prancha
+
+`storyboard-clean.png` é uma edição da prancha aprovada, preservando seus seis ambientes enquanto retira títulos, setas e personagens estáticos. O runtime usa recortes explícitos em `level.js`; nenhuma skyline procedural substitui os quadros. O atlas modular permanece como material de produção e histórico, mas não é a base visual atual. O elevador dinâmico usa um recorte da própria prancha. Os PNGs de herói e drones continuam os aprovados anteriormente.

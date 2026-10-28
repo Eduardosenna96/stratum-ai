@@ -39,4 +39,8 @@ Pare ao completar o objetivo e passar os testes relevantes. Registre próximos p
 
 ## Fase 1 completa
 
-O mapa de seis setores e 9600 unidades é definido em `level.js`. Preserve as rotas por ruas, telhados e canal e os seus reencontros. Escadas têm subida automática e o elevador carrega o jogador. Use recortes explícitos de `assets/phase-01-atlas.js`; a imagem não tem uma grade perfeitamente uniforme. Ao modificar geometria, valide `tests/phase-route.cjs` de ponta a ponta e na volta, com coleta e elevador. Esse teste isola geometria desligando inimigos; não descreva isso como validação da dificuldade completa.
+O mapa atual é definido em `level.js`; use os seis quadros aprovados e seus recortes explícitos. Preserve as rotas por ruas, telhados e canal e os seus reencontros. Escadas têm subida automática e o elevador carrega o jogador. Use os recortes de `level.scenes[].crop`; as divisórias da prancha limpa não são uniformes. Ao modificar geometria, valide `tests/phase-route.cjs` de ponta a ponta e na volta, com coleta e elevador. Esse teste isola geometria desligando inimigos; não descreva isso como validação da dificuldade completa.
+
+## Correção de fidelidade0.5
+
+O mapa0.4 foi rejeitado visualmente. A referência obrigatória é `docs/phase-01/full-map.png`, não só o kit de peças. Leia `docs/phase-01/FIDELITY.md`. Para a montagem atual, cenários inteiros vêm de `assets/storyboard-clean.png`; `level.js` traça superfícies na arte e alinha alturas globais entre salas. Antes de publicar, compare os seis ambientes com a prancha e confira botas/pisos e escala, além dos testes. Não reinserir skyline genérica ou recompor livremente a arquitetura aprovada.
