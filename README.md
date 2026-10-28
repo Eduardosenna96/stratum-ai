@@ -44,4 +44,12 @@ Veja [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md) para decisões e próximos passo
 
 ## Verificação desta versão
 
-9 testes de regras e 14 cenários de navegador passaram. O HTML independente foi carregado via HTTP com o sprite embutido e sem requests externos de assets. Não houve erros JavaScript. O watcher também foi exercitado na inicialização e após uma alteração local. O workflow de GitHub Actions testa e empacota; o QA do navegador foi executado no ambiente cloud.
+9 testes de regras e 18 cenários de navegador passaram. O HTML independente foi carregado via HTTP com o sprite embutido e sem requests externos de assets. Não houve erros JavaScript. O watcher também foi exercitado na inicialização e após uma alteração local. O workflow de GitHub Actions testa e empacota; o QA do navegador foi executado no ambiente cloud.
+
+## Reconstrução 0.3
+
+A cidade agora usa `assets/city-atlas.png` (24 peças) e os inimigos usam `assets/drone-atlas.png` (24 quadros): voo, alerta, tiro e destruição. O Vigia é uma variante ampliada do drone. O fundo distante continua procedural; telhados, fachadas, janelas e elementos das docas usam o atlas. Tiros têm mira anunciada, trajetória fixa, recarga e colisão com terreno. As condições de vitória, pontos seguros e controles foram preservadas.
+
+Os dois atlas originais foram preservados. `tools/describe-atlases.py` apenas descreve limites de alpha e gera `assets/atlases.js/json` para recortes no Canvas, sem alterar a arte; só esse utilitário opcional usa Pillow. O build HTML embute os três PNGs e os metadados, sem requests externos.
+
+Jogue a versão publicada em https://eduardosenna96.github.io/stratum-ai/. A atualização da branch `gh-pages` dispara a publicação automática; o script `tools/publish-pages.cjs` usa esse fluxo sem API adicional.

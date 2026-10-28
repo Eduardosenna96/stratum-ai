@@ -38,10 +38,18 @@ Não adicionar campanha, inventário complexo ou geração de arte em lote antes
 - Testado teclado real no build independente, toque em 390 × 844 e controles em tela cheia em 844 × 390.
 - Inspecionadas capturas desktop e mobile; o canvas é pequeno em retrato, sendo paisagem/tela cheia a melhor opção no celular.
 - Corrigido um teste que consultava a velocidade antes do próximo tick do buffer de salto; o teste agora aguarda a física, sem alterar a mecânica para fazê-lo passar.
-- O pacote único foi validado via HTTP; navegação local file:// depende do navegador do jogador. Não foi publicado um site público.
+- O pacote único foi validado via HTTP; navegação local file:// depende do navegador do jogador. O site está publicado no GitHub Pages: https://eduardosenna96.github.io/stratum-ai/.
 
 ## Publicação estática
 
-`node tools/publish-pages.cjs --prepare-only` cria localmente uma branch `gh-pages` com apenas `index.html` independente e `.nojekyll`, sem trocar o checkout de desenvolvimento nem criar worktrees. Repetir com o mesmo conteúdo reaproveita o mesmo commit. Sem a opção, o script faz push sem força, configura GitHub Pages pela API e solicita build. Requer a autenticação GitHub já fornecida pelo ambiente e acesso de rede a `api.github.com`; depois é preciso validar o endereço retornado, normalmente `eduardosenna96.github.io/stratum-ai/`.
+`node tools/publish-pages.cjs --prepare-only` cria localmente uma branch `gh-pages` com apenas `index.html` independente e `.nojekyll`, sem trocar o checkout de desenvolvimento nem criar worktrees. Repetir com o mesmo conteúdo reaproveita o mesmo commit. Sem a opção, o script faz push sem força; o GitHub Pages já configurado publica a branch automaticamente. `--configure-pages` é reservado para configuração inicial pela API. Requer a autenticação GitHub já fornecida pelo ambiente e acesso de rede a `api.github.com`; depois é preciso validar o endereço retornado, normalmente `eduardosenna96.github.io/stratum-ai/`.
 
 Uma branch publicada não prova que o Pages está ativo. Somente entregar endereço de jogo após confirmar a página e o funcionamento. Se houver falha de rede/permissão, preservar o material preparado e explicar o requisito específico. Não solicitar tokens antes de testar a autenticação existente.
+
+## Reconstrução 0.3
+
+Assets modulares da cidade substituem os blocos provisórios no plano de jogo. A skyline distante em cache foi mantida para paralaxe. Drones Órbita patrulham em limites fixos, flutuam, anunciam tiros com o olho vermelho e disparam pela mira registrada no início do aviso. Projéteis são limitados a 20, expiram e colidem com o jogador ou com telhados. O contato é consumido mesmo se o jogador estiver protegido. Ao morrer, o drone passa por seis quadros de destruição; o Vigia conserva o padrão de investida reta para preservar a legibilidade do chefe.
+
+As mesmas rotas de salto, pontos seguros e controles são preservadas. O build offline agora inclui três PNGs e o atlas de recortes. O utilitário de limites de alpha não altera imagens.
+
+Validação 0.3: 9 regras automatizadas e 18 cenários de navegador passaram. Os quatro cenários novos cobrem recortes dos atlas, drones/antecipação/mira, destruição e ciclo completo dos projéteis. Nenhum erro JavaScript foi registrado.

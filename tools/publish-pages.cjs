@@ -21,6 +21,7 @@ try{
  prepare();
  if(process.argv.includes('--prepare-only'))process.exit(0);
  console.log(git('push','origin','gh-pages'));
+ if(!process.argv.includes('--configure-pages')){console.log('Push enviado. O GitHub Pages configurado publica automaticamente essa branch.');console.log('Endereço: https://eduardosenna96.github.io/stratum-ai/');console.log('Confirme a conclusão do build antes de anunciar a atualização.');process.exit(0);}
  const repo='repos/Eduardosenna96/stratum-ai';let site;
  try{site=api('GET',repo+'/pages');}catch(error){if(!String(error.stderr||'').includes('HTTP 404'))throw error;}
  const spec={build_type:'legacy',source:{branch:'gh-pages',path:'/'}};
