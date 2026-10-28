@@ -13,7 +13,7 @@ walk(t.point(1,1650,640).x);walk(t.point(1,1180,345).x);go(4);item();go(1);go(3)
 // Descend again, then cross the lower canal gap with a real jump.
 walk(ladder.x);t.keys.clear();t.keys.add('ArrowDown');step(105);t.keys.clear();walk(t.point(3,1040,723).x);walk(t.point(3,1260,724).x,true);go(5);go(6);item();go(7);
 if(falls)throw Error('Route took environmental damage '+falls+' times');
-return{ticks,room:t.state.room,owned:t.state.owned,falls};});console.log('PASS physical route without repositioning (enemies disabled):',result);await p.screenshot({path:'/tmp/shadowman-v07-route.png'});
+return{ticks,room:t.state.room,owned:t.state.owned,falls};});console.log('PASS physical route without repositioning (enemies disabled):',result);await p.screenshot({path:'/tmp/shadowman-v08-route.png'});
 // Only visual review uses explicit room entry after the physical-route assertion.
-for(const [room,name] of [[3,'canal'],[5,'terminal']]){await p.evaluate(room=>{CITY_TEST.enter(room);CITY_TEST.p.inv=0;CITY_TEST.render();},room);await p.screenshot({path:'/tmp/shadowman-v07-'+name+'.png'});}
+for(const [room,name] of [[3,'canal'],[5,'terminal']]){await p.evaluate(room=>{CITY_TEST.enter(room);CITY_TEST.p.inv=0;CITY_TEST.render();},room);await p.screenshot({path:'/tmp/shadowman-v08-'+name+'.png'});}
 }finally{await b.close();}})().catch(e=>{console.error(e);process.exitCode=1});

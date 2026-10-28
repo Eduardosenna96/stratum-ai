@@ -1,6 +1,8 @@
-# Shadowman — Cidade Interligada · protótipo 0.7
+# Shadowman — Cidade Interligada · protótipo 0.8
 
-**Jogar:** https://eduardosenna96.github.io/stratum-ai/?v=0.7
+**Jogar:** https://eduardosenna96.github.io/stratum-ai/?v=0.8
+
+A versão0.8 acrescenta câmera próxima com acompanhamento e antecipação de direção, aceleração/frenagem, ataque repetido ao segurarJ e impacto com pausa breve/partículas. Continua sendo um protótipo próprio, sem integração com uma engine de Castlevania identificada.
 
 Novo modelo de exploração em oito salas conectadas, com poderes desbloqueáveis, retornos, atalhos e progresso salvo neste navegador. E entra/interage; Espaço pula; setas/A D movem; ↑ ↓ usam escadas; J ataca; K usa Passo após conquistá-lo; M abre mapa; P pausa. O objetivo inicial é encontrar o Passo no Arquivo e voltar à Praça para liberar o Canal.
 
