@@ -39,3 +39,9 @@ Não adicionar campanha, inventário complexo ou geração de arte em lote antes
 - Inspecionadas capturas desktop e mobile; o canvas é pequeno em retrato, sendo paisagem/tela cheia a melhor opção no celular.
 - Corrigido um teste que consultava a velocidade antes do próximo tick do buffer de salto; o teste agora aguarda a física, sem alterar a mecânica para fazê-lo passar.
 - O pacote único foi validado via HTTP; navegação local file:// depende do navegador do jogador. Não foi publicado um site público.
+
+## Publicação estática
+
+`node tools/publish-pages.cjs --prepare-only` cria localmente uma branch `gh-pages` com apenas `index.html` independente e `.nojekyll`, sem trocar o checkout de desenvolvimento nem criar worktrees. Repetir com o mesmo conteúdo reaproveita o mesmo commit. Sem a opção, o script faz push sem força, configura GitHub Pages pela API e solicita build. Requer a autenticação GitHub já fornecida pelo ambiente e acesso de rede a `api.github.com`; depois é preciso validar o endereço retornado, normalmente `eduardosenna96.github.io/stratum-ai/`.
+
+Uma branch publicada não prova que o Pages está ativo. Somente entregar endereço de jogo após confirmar a página e o funcionamento. Se houver falha de rede/permissão, preservar o material preparado e explicar o requisito específico. Não solicitar tokens antes de testar a autenticação existente.
