@@ -27,3 +27,7 @@ O runtime agora usa `phase-01-complete-atlas.png` e seus36 recortes de `phase-01
 ## Cenários individuais0.7
 
 city-streets-hd.png, city-canal-hd.png e city-terminal-hd.png são cenas inteiras1672×941, geradas/editadas a partir do mockup aprovado. Ruas mantém sua composição sem HUD e atores estáticos; as outras duas são ambientes complementares. O runtime desenha atores e HUD separados. As oito salas compartilham esses três ambientes. Não são assets4K nem tiles regulares. prototype/city-level.js registra superfícies na imagem; canvas usa proporção16:9 e resolução interna ajustada ao dispositivo atéDPR2.
+
+## Movimento0.10
+
+shadowman-motion.png é atlasRGBA1536×1024, com escalada de costas e ataque de palma. Os recortes não são uma grade regular: shadowman-motion.json registra áreas e pivôs na imagem. A geração repetiu duas poses superiores; o ciclo de quatro fases alterna as duas poses de costas e suas versões espelhadas para trocar braços/pernas. Ataque tem quatro recortes distintos, incluindo efeito de sombra. As poses de borda ainda usam a folha anterior. O atlas é reutilizado em todas as salas; revisão de mapa exige testar contato com superfícies, não gerar um personagem novo.

@@ -1,8 +1,8 @@
-# Shadowman — Cidade Interligada · protótipo 0.9
+# Shadowman — Cidade Interligada · protótipo 0.10
 
-**Jogar:** https://eduardosenna96.github.io/stratum-ai/?v=0.9
+**Jogar:** https://eduardosenna96.github.io/stratum-ai/?v=0.10
 
-A versão0.9 prioriza travessia inspirada em Prince of Persia: remove arcos e ícones de portais, faz a passagemCais/Ruas ao continuar andando, mantémE para interiores e mecanismos, anima subida de borda em16ticks e permite caminhar comShift protegendo contra passos semapoio. Mantém câmera próxima e combate da0.8. É código original doShadowman; PrinceofPersia eCastlevania são referências de experiência, sem integração de código desses jogos.
+A versão0.10 acrescenta sprite sheet de escalada vista de costas e ataque de palma sombria, com recortes e pivôs explícitos. A corrida é animada por distância percorrida, escada para de animar quando o personagem para, e o salto usa fases de subida/queda com corte gradual ao soltarEspaço. O ataque tem preparação/ativo/recuperação e direção travada durante o golpe. SuperMarioWorld é referência de resposta de controles; o universo e a arte continuam próprios. Mantém melhorias de UX da0.9.
 
 Novo modelo de exploração em oito salas conectadas, com poderes desbloqueáveis, retornos, atalhos e progresso salvo neste navegador. E entra/interage; Espaço pula; setas/A D movem; ↑ ↓ usam escadas; J ataca; K usa Passo após conquistá-lo; M abre mapa; P pausa. O objetivo inicial é encontrar o Passo no Arquivo e voltar à Praça para liberar o Canal.
 

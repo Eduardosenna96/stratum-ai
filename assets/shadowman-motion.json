@@ -1,0 +1,17 @@
+{
+  "image":"shadowman-motion.png",
+  "size":[1536,1024],
+  "climb":[
+    {"rect":[0,0,384,550],"pivot":[240,540],"mirror":false},
+    {"rect":[384,0,384,550],"pivot":[598,540],"mirror":false},
+    {"rect":[0,0,384,550],"pivot":[240,540],"mirror":true},
+    {"rect":[384,0,384,550],"pivot":[598,540],"mirror":true}
+  ],
+  "attack":[
+    {"rect":[0,600,355,370],"pivot":[190,953]},
+    {"rect":[355,600,480,370],"pivot":[545,953]},
+    {"rect":[835,600,390,370],"pivot":[960,953]},
+    {"rect":[1225,600,311,370],"pivot":[1375,953]}
+  ],
+  "notes":"Explicit irregular crops; generation duplicated climbing poses, so opposite arm/leg phases use mirrored back-view frames. No grid slicing assumption. One atlas for all maps."
+}
