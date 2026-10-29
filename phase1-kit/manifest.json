@@ -864,6 +864,8 @@
     }
   },
   "environment": {
+    "atlasJSON": "atlases/environment.json",
+    "materialsJSON": "atlases/materials.json",
     "atlas": "phase-01-complete-atlas.webp",
     "frames": "assets/phase-01-atlas.json",
     "materials": "tile-materials.webp",
