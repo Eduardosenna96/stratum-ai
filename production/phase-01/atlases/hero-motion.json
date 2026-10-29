@@ -1,0 +1,164 @@
+{
+  "frames": {
+    "climb-0": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 384,
+        "h": 550
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 384,
+        "h": 550
+      },
+      "sourceSize": {
+        "w": 384,
+        "h": 550
+      },
+      "pivot": {
+        "x": 0.625,
+        "y": 0.9818181818181818
+      },
+      "worldScale": 0.15
+    },
+    "climb-1": {
+      "frame": {
+        "x": 384,
+        "y": 0,
+        "w": 384,
+        "h": 550
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 384,
+        "h": 550
+      },
+      "sourceSize": {
+        "w": 384,
+        "h": 550
+      },
+      "pivot": {
+        "x": 0.5572916666666666,
+        "y": 0.9818181818181818
+      },
+      "worldScale": 0.15
+    },
+    "cast-0": {
+      "frame": {
+        "x": 0,
+        "y": 600,
+        "w": 355,
+        "h": 370
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 355,
+        "h": 370
+      },
+      "sourceSize": {
+        "w": 355,
+        "h": 370
+      },
+      "pivot": {
+        "x": 0.5352112676056338,
+        "y": 0.9540540540540541
+      },
+      "worldScale": 0.205
+    },
+    "cast-1": {
+      "frame": {
+        "x": 355,
+        "y": 600,
+        "w": 480,
+        "h": 370
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 370
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 370
+      },
+      "pivot": {
+        "x": 0.3958333333333333,
+        "y": 0.9540540540540541
+      },
+      "worldScale": 0.205
+    },
+    "cast-2": {
+      "frame": {
+        "x": 835,
+        "y": 600,
+        "w": 390,
+        "h": 370
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 370
+      },
+      "sourceSize": {
+        "w": 390,
+        "h": 370
+      },
+      "pivot": {
+        "x": 0.32051282051282054,
+        "y": 0.9540540540540541
+      },
+      "worldScale": 0.205
+    },
+    "cast-3": {
+      "frame": {
+        "x": 1225,
+        "y": 600,
+        "w": 311,
+        "h": 370
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 311,
+        "h": 370
+      },
+      "sourceSize": {
+        "w": 311,
+        "h": 370
+      },
+      "pivot": {
+        "x": 0.48231511254019294,
+        "y": 0.9540540540540541
+      },
+      "worldScale": 0.205
+    }
+  },
+  "meta": {
+    "app": "Shadowman phase-01 kit",
+    "image": "shadowman-motion.webp",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1536,
+      "h": 1024
+    },
+    "scale": "1"
+  }
+}

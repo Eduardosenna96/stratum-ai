@@ -1,6 +1,12 @@
-# Shadowman — Cidade das Sombras · 0.11
+> **Etapa atual: kit da fase 1 antes da integração.** A versão pública voltou ao visual0.10 após rejeição da0.11. O trabalho novo está em production/phase-01, numa branch separada, com catálogo Phaser, atlas/metadados e mapas editáveis. Veja production/phase-01/README.md. Não considerar o tilemap renderizado0.11 abaixo como aparência aprovada.
 
-Jogo original de Eduardo Senna / Senna Comics. **Jogar:** https://eduardosenna96.github.io/stratum-ai/?v=0.11
+# Shadowman — produção da fase1
+
+Jogo original de Eduardo Senna / Senna Comics. **Jogo restaurado:** https://eduardosenna96.github.io/stratum-ai/?v=restaurado-010
+
+**Catálogo de assets:** https://eduardosenna96.github.io/stratum-ai/phase1-kit/
+
+As instruções abaixo descrevem o modelo experimental0.11 preservado nas fontes, não a versão pública restaurada.
 
 Oito áreas conectadas de3072×960, com mapas de várias telas, caminhos altos e baixos, poderes, atalhos e progresso salvo no navegador. A cidade usa tilemap: apoios e desenho das plataformas vêm dos mesmos dados. Fundos distantes, prédios intermediários e plano jogável têm velocidades de parallax distintas. O capuz, os olhos azuis e o infinito do Shadowman são preservados; ele combate com sombras.
 

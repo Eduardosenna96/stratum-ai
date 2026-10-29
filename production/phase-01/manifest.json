@@ -1,0 +1,927 @@
+{
+  "version": 1,
+  "stage": "preproduction-review",
+  "engine": {
+    "target": "Phaser",
+    "version": "3.90.0",
+    "architecture": "Scenes / Actors / Components / States / Data, inspired by organization patterns used in Unreal; not Unreal runtime"
+  },
+  "textures": {
+    "hero-base": {
+      "image": "shadowman.webp",
+      "atlas": "atlases/hero-base.json",
+      "size": [
+        1536,
+        1024
+      ]
+    },
+    "drone": {
+      "image": "drone-atlas.webp",
+      "atlas": "atlases/drone.json",
+      "size": [
+        1536,
+        1024
+      ]
+    },
+    "vigia": {
+      "image": "vigia-atlas.webp",
+      "atlas": "atlases/vigia.json",
+      "size": [
+        1536,
+        1024
+      ]
+    },
+    "hero-motion": {
+      "image": "shadowman-motion.webp",
+      "atlas": "atlases/hero-motion.json",
+      "size": [
+        1536,
+        1024
+      ]
+    },
+    "hero-extra": {
+      "image": "shadowman-extra.webp",
+      "atlas": "atlases/hero-extra.json",
+      "size": [
+        1536,
+        1024
+      ]
+    }
+  },
+  "clips": {
+    "hero/repouso": {
+      "actor": "hero",
+      "name": "repouso",
+      "loop": true,
+      "notes": "",
+      "frames": [
+        {
+          "texture": "hero-base",
+          "frame": "0-0",
+          "duration": 150
+        },
+        {
+          "texture": "hero-base",
+          "frame": "0-1",
+          "duration": 150
+        },
+        {
+          "texture": "hero-base",
+          "frame": "0-2",
+          "duration": 150
+        },
+        {
+          "texture": "hero-base",
+          "frame": "0-3",
+          "duration": 150
+        },
+        {
+          "texture": "hero-base",
+          "frame": "0-4",
+          "duration": 150
+        },
+        {
+          "texture": "hero-base",
+          "frame": "0-5",
+          "duration": 150
+        }
+      ]
+    },
+    "hero/caminhada": {
+      "actor": "hero",
+      "name": "caminhada",
+      "loop": true,
+      "notes": "Reusa corrida em cadência menor; revisar passada antes da animação final.",
+      "frames": [
+        {
+          "texture": "hero-base",
+          "frame": "1-0",
+          "duration": 130
+        },
+        {
+          "texture": "hero-base",
+          "frame": "1-1",
+          "duration": 130
+        },
+        {
+          "texture": "hero-base",
+          "frame": "1-2",
+          "duration": 130
+        },
+        {
+          "texture": "hero-base",
+          "frame": "1-3",
+          "duration": 130
+        },
+        {
+          "texture": "hero-base",
+          "frame": "1-4",
+          "duration": 130
+        },
+        {
+          "texture": "hero-base",
+          "frame": "1-5",
+          "duration": 130
+        }
+      ]
+    },
+    "hero/corrida": {
+      "actor": "hero",
+      "name": "corrida",
+      "loop": true,
+      "notes": "",
+      "frames": [
+        {
+          "texture": "hero-base",
+          "frame": "1-0",
+          "duration": 75
+        },
+        {
+          "texture": "hero-base",
+          "frame": "1-1",
+          "duration": 75
+        },
+        {
+          "texture": "hero-base",
+          "frame": "1-2",
+          "duration": 75
+        },
+        {
+          "texture": "hero-base",
+          "frame": "1-3",
+          "duration": 75
+        },
+        {
+          "texture": "hero-base",
+          "frame": "1-4",
+          "duration": 75
+        },
+        {
+          "texture": "hero-base",
+          "frame": "1-5",
+          "duration": 75
+        }
+      ]
+    },
+    "hero/salto-inicio": {
+      "actor": "hero",
+      "name": "salto-inicio",
+      "loop": false,
+      "notes": "",
+      "frames": [
+        {
+          "texture": "hero-base",
+          "frame": "2-0",
+          "duration": 65
+        },
+        {
+          "texture": "hero-base",
+          "frame": "2-1",
+          "duration": 65
+        }
+      ]
+    },
+    "hero/salto-subida": {
+      "actor": "hero",
+      "name": "salto-subida",
+      "loop": false,
+      "notes": "",
+      "frames": [
+        {
+          "texture": "hero-base",
+          "frame": "2-1",
+          "duration": 100
+        },
+        {
+          "texture": "hero-base",
+          "frame": "2-2",
+          "duration": 100
+        }
+      ]
+    },
+    "hero/salto-apice": {
+      "actor": "hero",
+      "name": "salto-apice",
+      "loop": false,
+      "notes": "",
+      "frames": [
+        {
+          "texture": "hero-base",
+          "frame": "2-3",
+          "duration": 120
+        }
+      ]
+    },
+    "hero/queda": {
+      "actor": "hero",
+      "name": "queda",
+      "loop": true,
+      "notes": "",
+      "frames": [
+        {
+          "texture": "hero-base",
+          "frame": "2-4",
+          "duration": 120
+        }
+      ]
+    },
+    "hero/pouso": {
+      "actor": "hero",
+      "name": "pouso",
+      "loop": false,
+      "notes": "",
+      "frames": [
+        {
+          "texture": "hero-base",
+          "frame": "2-5",
+          "duration": 75
+        },
+        {
+          "texture": "hero-base",
+          "frame": "0-0",
+          "duration": 75
+        }
+      ]
+    },
+    "hero/agachar": {
+      "actor": "hero",
+      "name": "agachar",
+      "loop": false,
+      "notes": "",
+      "frames": [
+        {
+          "texture": "hero-base",
+          "frame": "2-0",
+          "duration": 180
+        }
+      ]
+    },
+    "hero/escada": {
+      "actor": "hero",
+      "name": "escada",
+      "loop": true,
+      "notes": "Poses de costas espelhadas alternam braços/pernas. Conferir estabilidade de mãos na escada.",
+      "frames": [
+        {
+          "texture": "hero-motion",
+          "frame": "climb-0",
+          "duration": 120
+        },
+        {
+          "texture": "hero-motion",
+          "frame": "climb-1",
+          "duration": 120
+        },
+        {
+          "texture": "hero-motion",
+          "frame": "climb-0",
+          "duration": 120,
+          "flipX": true
+        },
+        {
+          "texture": "hero-motion",
+          "frame": "climb-1",
+          "duration": 120,
+          "flipX": true
+        }
+      ]
+    },
+    "hero/pendurar": {
+      "actor": "hero",
+      "name": "pendurar",
+      "loop": true,
+      "notes": "",
+      "frames": [
+        {
+          "texture": "hero-extra",
+          "frame": "hang",
+          "duration": 150
+        }
+      ]
+    },
+    "hero/subir-borda": {
+      "actor": "hero",
+      "name": "subir-borda",
+      "loop": false,
+      "notes": "Pivôs são referências locais; integração terá âncora de mão na borda.",
+      "frames": [
+        {
+          "texture": "hero-extra",
+          "frame": "hang",
+          "duration": 100
+        },
+        {
+          "texture": "hero-extra",
+          "frame": "mantle-pull",
+          "duration": 100
+        },
+        {
+          "texture": "hero-extra",
+          "frame": "mantle-top",
+          "duration": 100
+        },
+        {
+          "texture": "hero-base",
+          "frame": "0-0",
+          "duration": 100
+        }
+      ]
+    },
+    "hero/dano": {
+      "actor": "hero",
+      "name": "dano",
+      "loop": false,
+      "notes": "",
+      "frames": [
+        {
+          "texture": "hero-extra",
+          "frame": "hurt",
+          "duration": 180
+        }
+      ]
+    },
+    "hero/derrota": {
+      "actor": "hero",
+      "name": "derrota",
+      "loop": false,
+      "notes": "Dissolução/fade será efeito separado.",
+      "frames": [
+        {
+          "texture": "hero-extra",
+          "frame": "defeated",
+          "duration": 650
+        }
+      ]
+    },
+    "hero/passo-sombrio": {
+      "actor": "hero",
+      "name": "passo-sombrio",
+      "loop": false,
+      "notes": "",
+      "frames": [
+        {
+          "texture": "hero-extra",
+          "frame": "dash",
+          "duration": 180
+        }
+      ]
+    },
+    "hero/lanca-sombra": {
+      "actor": "hero",
+      "name": "lanca-sombra",
+      "loop": false,
+      "notes": "",
+      "frames": [
+        {
+          "texture": "hero-motion",
+          "frame": "cast-0",
+          "duration": 80
+        },
+        {
+          "texture": "hero-motion",
+          "frame": "cast-1",
+          "duration": 110
+        },
+        {
+          "texture": "hero-motion",
+          "frame": "cast-2",
+          "duration": 80
+        },
+        {
+          "texture": "hero-motion",
+          "frame": "cast-3",
+          "duration": 100
+        }
+      ]
+    },
+    "hero/absorcao": {
+      "actor": "hero",
+      "name": "absorcao",
+      "loop": true,
+      "notes": "Pose de canalização; partículas/tentáculos são VFX separados.",
+      "frames": [
+        {
+          "texture": "hero-extra",
+          "frame": "absorb",
+          "duration": 250
+        }
+      ]
+    },
+    "drone/patrulha": {
+      "actor": "drone",
+      "name": "patrulha",
+      "loop": true,
+      "notes": "",
+      "frames": [
+        {
+          "texture": "drone",
+          "frame": "0-0",
+          "duration": 130
+        },
+        {
+          "texture": "drone",
+          "frame": "0-1",
+          "duration": 130
+        },
+        {
+          "texture": "drone",
+          "frame": "0-2",
+          "duration": 130
+        },
+        {
+          "texture": "drone",
+          "frame": "0-3",
+          "duration": 130
+        },
+        {
+          "texture": "drone",
+          "frame": "0-4",
+          "duration": 130
+        },
+        {
+          "texture": "drone",
+          "frame": "0-5",
+          "duration": 130
+        }
+      ]
+    },
+    "drone/alerta": {
+      "actor": "drone",
+      "name": "alerta",
+      "loop": false,
+      "notes": "",
+      "frames": [
+        {
+          "texture": "drone",
+          "frame": "1-0",
+          "duration": 100
+        },
+        {
+          "texture": "drone",
+          "frame": "1-1",
+          "duration": 100
+        },
+        {
+          "texture": "drone",
+          "frame": "1-2",
+          "duration": 100
+        },
+        {
+          "texture": "drone",
+          "frame": "1-3",
+          "duration": 100
+        },
+        {
+          "texture": "drone",
+          "frame": "1-4",
+          "duration": 100
+        },
+        {
+          "texture": "drone",
+          "frame": "1-5",
+          "duration": 100
+        }
+      ]
+    },
+    "drone/disparo": {
+      "actor": "drone",
+      "name": "disparo",
+      "loop": false,
+      "notes": "",
+      "frames": [
+        {
+          "texture": "drone",
+          "frame": "2-0",
+          "duration": 75
+        },
+        {
+          "texture": "drone",
+          "frame": "2-1",
+          "duration": 75
+        },
+        {
+          "texture": "drone",
+          "frame": "2-2",
+          "duration": 75
+        },
+        {
+          "texture": "drone",
+          "frame": "2-3",
+          "duration": 75
+        },
+        {
+          "texture": "drone",
+          "frame": "2-4",
+          "duration": 75
+        },
+        {
+          "texture": "drone",
+          "frame": "2-5",
+          "duration": 75
+        }
+      ]
+    },
+    "drone/dano": {
+      "actor": "drone",
+      "name": "dano",
+      "loop": false,
+      "notes": "",
+      "frames": [
+        {
+          "texture": "drone",
+          "frame": "3-0",
+          "duration": 90
+        },
+        {
+          "texture": "drone",
+          "frame": "3-1",
+          "duration": 90
+        }
+      ]
+    },
+    "drone/destruicao": {
+      "actor": "drone",
+      "name": "destruicao",
+      "loop": false,
+      "notes": "",
+      "frames": [
+        {
+          "texture": "drone",
+          "frame": "3-0",
+          "duration": 100
+        },
+        {
+          "texture": "drone",
+          "frame": "3-1",
+          "duration": 100
+        },
+        {
+          "texture": "drone",
+          "frame": "3-2",
+          "duration": 100
+        },
+        {
+          "texture": "drone",
+          "frame": "3-3",
+          "duration": 100
+        },
+        {
+          "texture": "drone",
+          "frame": "3-4",
+          "duration": 100
+        },
+        {
+          "texture": "drone",
+          "frame": "3-5",
+          "duration": 100
+        }
+      ]
+    },
+    "drone/absorvido": {
+      "actor": "drone",
+      "name": "absorvido",
+      "loop": false,
+      "notes": "Variante derivada; VFX de absorção será aplicado na integração.",
+      "frames": [
+        {
+          "texture": "drone",
+          "frame": "3-0",
+          "duration": 80
+        },
+        {
+          "texture": "drone",
+          "frame": "3-1",
+          "duration": 80
+        },
+        {
+          "texture": "drone",
+          "frame": "3-2",
+          "duration": 80
+        },
+        {
+          "texture": "drone",
+          "frame": "3-3",
+          "duration": 80
+        },
+        {
+          "texture": "drone",
+          "frame": "3-4",
+          "duration": 80
+        },
+        {
+          "texture": "drone",
+          "frame": "3-5",
+          "duration": 80
+        }
+      ]
+    },
+    "vigia/patrulha": {
+      "actor": "vigia",
+      "name": "patrulha",
+      "loop": true,
+      "notes": "",
+      "frames": [
+        {
+          "texture": "vigia",
+          "frame": "0-0",
+          "duration": 130
+        },
+        {
+          "texture": "vigia",
+          "frame": "0-1",
+          "duration": 130
+        },
+        {
+          "texture": "vigia",
+          "frame": "0-2",
+          "duration": 130
+        },
+        {
+          "texture": "vigia",
+          "frame": "0-3",
+          "duration": 130
+        },
+        {
+          "texture": "vigia",
+          "frame": "0-4",
+          "duration": 130
+        },
+        {
+          "texture": "vigia",
+          "frame": "0-5",
+          "duration": 130
+        }
+      ]
+    },
+    "vigia/alerta": {
+      "actor": "vigia",
+      "name": "alerta",
+      "loop": false,
+      "notes": "",
+      "frames": [
+        {
+          "texture": "vigia",
+          "frame": "1-0",
+          "duration": 100
+        },
+        {
+          "texture": "vigia",
+          "frame": "1-1",
+          "duration": 100
+        },
+        {
+          "texture": "vigia",
+          "frame": "1-2",
+          "duration": 100
+        },
+        {
+          "texture": "vigia",
+          "frame": "1-3",
+          "duration": 100
+        },
+        {
+          "texture": "vigia",
+          "frame": "1-4",
+          "duration": 100
+        },
+        {
+          "texture": "vigia",
+          "frame": "1-5",
+          "duration": 100
+        }
+      ]
+    },
+    "vigia/investida": {
+      "actor": "vigia",
+      "name": "investida",
+      "loop": false,
+      "notes": "",
+      "frames": [
+        {
+          "texture": "vigia",
+          "frame": "2-0",
+          "duration": 75
+        },
+        {
+          "texture": "vigia",
+          "frame": "2-1",
+          "duration": 75
+        },
+        {
+          "texture": "vigia",
+          "frame": "2-2",
+          "duration": 75
+        },
+        {
+          "texture": "vigia",
+          "frame": "2-3",
+          "duration": 75
+        },
+        {
+          "texture": "vigia",
+          "frame": "2-4",
+          "duration": 75
+        },
+        {
+          "texture": "vigia",
+          "frame": "2-5",
+          "duration": 75
+        }
+      ]
+    },
+    "vigia/dano": {
+      "actor": "vigia",
+      "name": "dano",
+      "loop": false,
+      "notes": "",
+      "frames": [
+        {
+          "texture": "vigia",
+          "frame": "3-0",
+          "duration": 90
+        },
+        {
+          "texture": "vigia",
+          "frame": "3-1",
+          "duration": 90
+        }
+      ]
+    },
+    "vigia/destruicao": {
+      "actor": "vigia",
+      "name": "destruicao",
+      "loop": false,
+      "notes": "",
+      "frames": [
+        {
+          "texture": "vigia",
+          "frame": "3-0",
+          "duration": 100
+        },
+        {
+          "texture": "vigia",
+          "frame": "3-1",
+          "duration": 100
+        },
+        {
+          "texture": "vigia",
+          "frame": "3-2",
+          "duration": 100
+        },
+        {
+          "texture": "vigia",
+          "frame": "3-3",
+          "duration": 100
+        },
+        {
+          "texture": "vigia",
+          "frame": "3-4",
+          "duration": 100
+        },
+        {
+          "texture": "vigia",
+          "frame": "3-5",
+          "duration": 100
+        }
+      ]
+    },
+    "vigia/absorvido": {
+      "actor": "vigia",
+      "name": "absorvido",
+      "loop": false,
+      "notes": "Variante derivada; VFX de absorção será aplicado na integração.",
+      "frames": [
+        {
+          "texture": "vigia",
+          "frame": "3-0",
+          "duration": 80
+        },
+        {
+          "texture": "vigia",
+          "frame": "3-1",
+          "duration": 80
+        },
+        {
+          "texture": "vigia",
+          "frame": "3-2",
+          "duration": 80
+        },
+        {
+          "texture": "vigia",
+          "frame": "3-3",
+          "duration": 80
+        },
+        {
+          "texture": "vigia",
+          "frame": "3-4",
+          "duration": 80
+        },
+        {
+          "texture": "vigia",
+          "frame": "3-5",
+          "duration": 80
+        }
+      ]
+    }
+  },
+  "actors": {
+    "hero": {
+      "body": {
+        "w": 24,
+        "h": 54
+      },
+      "states": [
+        "hero/repouso",
+        "hero/caminhada",
+        "hero/corrida",
+        "hero/salto-inicio",
+        "hero/salto-subida",
+        "hero/salto-apice",
+        "hero/queda",
+        "hero/pouso",
+        "hero/agachar",
+        "hero/escada",
+        "hero/pendurar",
+        "hero/subir-borda",
+        "hero/dano",
+        "hero/derrota",
+        "hero/passo-sombrio",
+        "hero/lanca-sombra",
+        "hero/absorcao"
+      ]
+    },
+    "drone": {
+      "body": {
+        "w": 44,
+        "h": 44
+      }
+    },
+    "vigia": {
+      "body": {
+        "w": 96,
+        "h": 96
+      }
+    }
+  },
+  "environment": {
+    "atlasJSON": "atlases/environment.json",
+    "materialsJSON": "atlases/materials.json",
+    "atlas": "phase-01-complete-atlas.webp",
+    "frames": "assets/phase-01-atlas.json",
+    "materials": "tile-materials.webp",
+    "parallax": [
+      "parallax-far.webp",
+      "parallax-mid.webp"
+    ]
+  },
+  "maps": [
+    {
+      "id": 0,
+      "name": "Cais das Sombras",
+      "file": "maps/room-0.tmj"
+    },
+    {
+      "id": 1,
+      "name": "Praça dos Lampiões",
+      "file": "maps/room-1.tmj"
+    },
+    {
+      "id": 2,
+      "name": "Arquivo das Sombras",
+      "file": "maps/room-2.tmj"
+    },
+    {
+      "id": 3,
+      "name": "Galeria do Canal",
+      "file": "maps/room-3.tmj"
+    },
+    {
+      "id": 4,
+      "name": "Telhados do Relógio",
+      "file": "maps/room-4.tmj"
+    },
+    {
+      "id": 5,
+      "name": "Pátio das Máquinas",
+      "file": "maps/room-5.tmj"
+    },
+    {
+      "id": 6,
+      "name": "Câmara da Névoa",
+      "file": "maps/room-6.tmj"
+    },
+    {
+      "id": 7,
+      "name": "Coração do Terminal",
+      "file": "maps/room-7.tmj"
+    }
+  ],
+  "reference": "docs/phase-01/full-map.png",
+  "reviewRequired": [
+    "Passada de caminhada é derivada da corrida; revisar se precisa de folha própria.",
+    "Escalada usa poses espelhadas; validar contato mãos/pés antes de integrar.",
+    "Conferir bordas das células de VFX de disparo/investida para evitar corte.",
+    "Layout técnico exportado não é a aparência final da cidade; preservar referência artística.",
+    "Sem integração ou publicação de novo jogo nesta etapa."
+  ]
+}

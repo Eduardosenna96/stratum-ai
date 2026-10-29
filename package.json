@@ -5,9 +5,9 @@
   "description": "Jogo original de plataforma e poderes de sombra — Senna Comics",
   "scripts": {
     "start": "node server.cjs",
-    "build": "node tools/build-city.cjs",
-    "test": "node --check prototype/world.js && node --check prototype/tile-render.js && node tests/tile-world.test.cjs",
-    "test:browser": "node tests/tile-browser.cjs",
+    "build": "node tools/build-phase1-kit.cjs && node tools/publish-phase1-kit.cjs --build-only",
+    "test": "node tests/phase1-kit.cjs",
+    "test:browser": "node tests/phase1-browser.cjs",
     "watch": "node tools/watch.cjs",
     "build:city": "node tools/build-city.cjs",
     "test:city": "node tests/tile-world.test.cjs && node tests/tile-browser.cjs && node tests/tile-route.cjs",
@@ -15,9 +15,17 @@
     "export:tilemap": "node tools/export-tilemap.cjs",
     "build:legacy": "node tools/build.cjs",
     "test:legacy": "node --check game.js && node --check server.cjs && node tests/mechanics.test.cjs",
-    "test:animation:legacy": "node tests/city-animation.cjs"
+    "test:animation:legacy": "node tests/city-animation.cjs",
+    "build:phase1": "node tools/build-phase1-kit.cjs",
+    "test:phase1": "node tests/phase1-kit.cjs",
+    "build:game": "node tools/build-city.cjs",
+    "test:game": "node --check prototype/world.js && node --check prototype/tile-render.js && node tests/tile-world.test.cjs",
+    "test:browser:game": "node tests/tile-browser.cjs"
   },
   "engines": {
     "node": ">=18"
+  },
+  "devDependencies": {
+    "sharp": "0.35.5"
   }
 }
