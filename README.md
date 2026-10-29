@@ -1,61 +1,40 @@
-# Shadowman — Cidade Interligada · protótipo 0.10
+# Shadowman — Cidade das Sombras · 0.11
 
-**Jogar:** https://eduardosenna96.github.io/stratum-ai/?v=0.10
+Jogo original de Eduardo Senna / Senna Comics. **Jogar:** https://eduardosenna96.github.io/stratum-ai/?v=0.11
 
-A versão0.10 acrescenta sprite sheet de escalada vista de costas e ataque de palma sombria, com recortes e pivôs explícitos. A corrida é animada por distância percorrida, escada para de animar quando o personagem para, e o salto usa fases de subida/queda com corte gradual ao soltarEspaço. O ataque tem preparação/ativo/recuperação e direção travada durante o golpe. SuperMarioWorld é referência de resposta de controles; o universo e a arte continuam próprios. Mantém melhorias de UX da0.9.
+Oito áreas conectadas de3072×960, com mapas de várias telas, caminhos altos e baixos, poderes, atalhos e progresso salvo no navegador. A cidade usa tilemap: apoios e desenho das plataformas vêm dos mesmos dados. Fundos distantes, prédios intermediários e plano jogável têm velocidades de parallax distintas. O capuz, os olhos azuis e o infinito do Shadowman são preservados; ele combate com sombras.
 
-Novo modelo de exploração em oito salas conectadas, com poderes desbloqueáveis, retornos, atalhos e progresso salvo neste navegador. E entra/interage; Espaço pula; setas/A D movem; ↑ ↓ usam escadas; J ataca; K usa Passo após conquistá-lo; M abre mapa; P pausa. O objetivo inicial é encontrar o Passo no Arquivo e voltar à Praça para liberar o Canal.
+## Como jogar
 
-Agora usa três cenários individuais de1672×941, incluindo a composição do mockup de gameplay aprovado, em oito salas. A proporção16:9 é preservada e o canvas respeita DPR até2. Ainda não é a cidade final de24salas; interiores e exteriores são compartilhados entre salas. Tentáculo e Névoa são requisitos de travessias entre salas neste teste; as animações próprias ainda serão integradas.
+- Setas ou A/D: mover. Espaço: saltar; segure para salto mais alto.
+- Shift: andar com cuidado. ↑/↓: escadas; ↑ sobe bordas e ↓ solta.
+- J: lança de sombra; segurar repete. Cada lança custa12energia.
+- Q: segurar parado para absorver. Inimigos com1vida ou vestígios próximos recuperam energia; finalizar um inimigo por absorção também cura1vida. Sem alvo, canalizar recupera energia lentamente. Absorção e disparo são ações separadas.
+- E: entrar/interagir. K: Passo Sombrio após encontrar a habilidade.
+- M: mapa. P/Escape: pausa. Controles por toque aparecem em telas menores.
 
-Fonte: prototype/index.html, prototype/world.js e prototype/city-level.js. O site usa HTML leve, scripts e imagens separados com hashes; o HTML offline continua disponível pelo build. Build independente: `npm run build:city` → dist/Shadowman-Cidade.html. Testes: `npm run test:city` com servidor local. Publicar: `node tools/publish-pages.cjs --city`. Estrutura futura: docs/world/STRUCTURE.md.
+Atravesse os vãos do Cais para chegar à Praça. Encontre o Arquivo à direita, suba pela escada e pegue o Passo. Volte à Praça, entre no Canal e procure o Tentáculo na galeria de baixo. A rota alta leva ao Selo da Torre. Na Fábrica, o elevador alcança a Câmara da Névoa. Névoa e Selo abrem o Terminal. Derrote o Vigia e ative o núcleo.
 
----
+Poderes e atalhos são salvos. Cada entrada de sala é um ponto seguro que recupera vida/energia. O mundo novo usa armazenamento separado das versões anteriores. Se o navegador bloquear o armazenamento, o jogo informa a limitação e continua funcionando sem salvar.
 
-# Modelo anterior — As sombras despertam · 0.5
+## Executar e construir
 
-Jogo de plataforma e poderes de sombra, de Eduardo Senna / Senna Comics.
+Sem dependências de runtime externas. `npm start` abre servidor na porta3000; `/` encaminha ao jogo atual. Ao abrir fontes locais, use index.html da raiz ou prototype/index.html mantendo as pastas juntas.
 
-Código do modelo anterior preservado em index.html, game.js e level.js. A URL pública agora serve o novo protótipo; o parâmetro de versão não seleciona versões antigas.
+`npm run build` cria `dist/Shadowman-Cidade.html`, independente com imagens embutidas, e `dist/city-site/`, com HTML leve e assets separados por hash. `npm run export:tilemap` exporta os dados para assets/city-world.json. PNGs são masters; WebPs de runtime foram comprimidos sem perdas. `node tools/publish-pages.cjs --city` publica a entrega web na branch gh-pages existente, sem force-push.
 
-Esta correção utiliza a própria arte da prancha aprovada como seis cenários completos: Cais, Ruas, Telhados, Canal, Fábrica e Terminal08. Pisos, escadas e plataformas foram traçados sobre a imagem. A câmera mostra um ambiente por vez; as alturas globais de entrada/saída são alinhadas para manter o personagem nas mesmas coordenadas físicas durante as transições. O herói tem cerca de5% da largura da tela, conforme a referência.
+## Verificar
 
-## Controles
+`npm test` valida sintaxe e autoria do mapa. Com servidor local e Playwright/Chromium disponíveis:
 
-| Ação | Tecla |
-|---|---|
-| Andar | ← → ou A / D |
-| Saltar | Espaço; solte cedo para salto menor |
-| Escalar escadas/correntes | ↑ ↓ ou W / S |
-| Conjurar sombras | J |
-| Deslocamento sombrio | K |
-| Pausar / continuar | P ou Escape |
+- `npm run test:browser`: habilidades, progressão, animação, parallax, carregamento e interface.
+- `node tests/tile-route.cjs`: ida/volta com geometria isolada e passagem com combate ativo. As duas modalidades são identificadas separadamente.
+- `node tests/city-build.cjs`: referências, hashes e HTML independente.
 
-↑ também salta quando não há escada próxima. Os controles de toque incluem subir/descer. Colete os fragmentos junto à fonte, na plataforma sob a ponte e diante do reator. Para sair do canal, volte à escada à esquerda. Na fábrica, o elevador liga o andar baixo ao superior; a escada da passarela permite explorar a parte mais alta. O Vigia paira, anuncia o mergulho, avança em direção fixa e fica vulnerável ao pousar.
+`npm run watch` verifica autoria/build após mudanças locais, sem chamadas de IA. Não cria nem corrige código sozinho.
 
-Fragmentos e pontos seguros recuperam vida. Ao morrer é possível continuar com os fragmentos coletados. Não há salvamento após fechar o navegador. Som é opcional e começa desligado.
+## Fontes e limites
 
-## HTML e desenvolvimento
+prototype/tile-world.js autora mapas e conexões; tile-render.js desenha camadas/tilemap; world.js controla física, poderes e interface. Assets têm atlas/metadados de personagem, cenários e materiais. docs/ux/DEPTH-REVIEW.md registra revisão visual e limites.
 
-`npm run build` cria `dist/Shadowman.html` com imagem, código e dados embutidos; não há requests externos de assets. O arquivo funciona sem servidor ou instalação. Se baixar o ZIP de fontes, extraia tudo e abra `index.html` mantendo os arquivos juntos.
-
-Para desenvolver: Node.js18+; `npm start` usa a porta3000 (`PORT` opcional). Não é necessário instalar dependências de runtime.
-
-```sh
-npm test
-npm run build
-npm run test:browser
-```
-
-Os testes de navegador usam Playwright/Chromium disponíveis na máquina cloud. `CHROMIUM_PATH` e `BASE_URL` permitem outras instalações. `tests/phase-route.cjs` verifica ida/volta, fragmentos, escadas e elevador com inimigos desativados para isolar travessia; combate tem testes próprios. `npm run watch` executa regras e build ao editar sem chamadas de IA.
-
-## Referências e fontes
-
-- `docs/phase-01/full-map.png`: prancha aprovada.
-- `assets/storyboard-clean.png`: edição da prancha para cenários, sem anotações.
-- `docs/phase-01/FIDELITY.md`: critérios obrigatórios de comparação visual.
-- `level.js`: recortes, pisos, escadas, elevador e encontros.
-- `tools/trace-scenes.html`: ferramenta de inspeção com coordenadas e colisões.
-- `skills/shadowman-development/SKILL.md`: fluxo econômico de continuidade.
-
-A versão0.4 foi substituída por não reproduzir a composição aprovada. A correção0.5 ainda é um protótipo: arte limpa por IA pode ter diferenças locais da prancha original e a dificuldade precisa de avaliação com jogadores. Não confundir testes de mecânica com comprovação de fidelidade visual.
+Este é um jogo curto de oito áreas, não a campanha futura de24salas. Props são reaproveitados entre regiões, e o Vigia ainda é um encontro simples. Referências de travessia e controles incluem Prince of Persia, Castlevania e Super Mario World, com código, personagem e arte próprios. Modelos anteriores estão preservados no histórico e docs/archive; `npm run build:legacy` e `npm run test:legacy` são específicos do modelo antigo.

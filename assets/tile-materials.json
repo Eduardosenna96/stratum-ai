@@ -1,0 +1,1 @@
+{"image":"tile-materials.png","runtime":"tile-materials.webp","columns":3,"rows":2,"cell":512,"materials":["stone","brick","metal","wood","slate","foundation"],"render_grid":48,"stair_riser":12,"notes":"Texture samples are inset8px to exclude swatch borders; physical support comes from tile-world, not texture pixels."}

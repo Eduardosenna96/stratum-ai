@@ -1,3 +1,4 @@
+require('./export-tilemap.cjs');
 /* Two deliveries: a small cache-safe web entry and a self-contained offline HTML. */
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const root=path.resolve(__dirname,'..');

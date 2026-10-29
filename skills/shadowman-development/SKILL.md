@@ -44,3 +44,7 @@ O mapa atual é definido em `level.js`; use os seis quadros aprovados e seus rec
 ## Correção de fidelidade0.5
 
 O mapa0.4 foi rejeitado visualmente. A referência obrigatória é `docs/phase-01/full-map.png`, não só o kit de peças. Leia `docs/phase-01/FIDELITY.md`. Para a montagem atual, cenários inteiros vêm de `assets/storyboard-clean.png`; `level.js` traça superfícies na arte e alinha alturas globais entre salas. Antes de publicar, compare os seis ambientes com a prancha e confira botas/pisos e escala, além dos testes. Não reinserir skyline genérica ou recompor livremente a arquitetura aprovada.
+
+## Modelo atual e economia0.11
+
+Usuário autorizou reconstrução por tilemap com parallax e lança/absorção. Atual: prototype/tile-world.js, tile-render.js e world.js; instruções de recortes0.5 acima são históricas. Ler AGENTS.md atual e docs/ux/DEPTH-REVIEW.md. Só testar novamente o que mudou ou falhou. Não gerar arte/pesquisar/delegar sem necessidade concreta; uma validação real da rota vale mais que várias refações de estilo. A engine é Canvas próprio; esta skill não é Unreal/Phaser nem implica afiliação a estúdios. Não ocultar falhas com novos links de versão: concluir travessia, revisar capturas e registrar limites antes de publicar.

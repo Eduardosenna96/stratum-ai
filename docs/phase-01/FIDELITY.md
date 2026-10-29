@@ -24,3 +24,9 @@ Antes de publicar: verificar seis screenshots contra a referência, ajustar bota
 O usuário rejeitou a ampliação dos quadros na0.6 e escolheu a imagem individual de gameplay como aparência de referência. A0.7 usa assets/city-streets-hd.png, edição dessa imagem removendo HUD/personagens, e dois ambientes complementares: city-canal-hd.png e city-terminal-hd.png. Todos1672×941, proporção16:9. A identidade da prancha continua; as coordenadas atuais pertencem a prototype/city-level.js, traçadas nas novas artes. Os seis recortes antigos só se aplicam ao modelo anterior.
 
 Conferir captura real com a imagem de gameplay: guindaste à esquerda, armazém no meio, fonte/arco à direita, escadaria e relógio; personagem de capuz com infinito azul. Não confundir um mockup gerado com screenshot funcional. Ainda há oito salas dividindo três ambientes e as animações dos novos poderes não estão finalizadas. Resolução maior e DPR não criam detalhe acima do que existe nas artes.
+
+## Reconstrução por tiles0.11
+
+O usuário pediu tilemap e parallax reais após rejeitar a sobreposição de personagem sobre muro. Fonte atual: prototype/tile-world.js; cada apoio gera a plataforma desenhada correspondente em tile-render.js. Os mapas agora ocupam várias telas e conservam os marcos da cidade (guindaste, fonte, relógio, canal, fábrica e Terminal), com layout próprio de exploração. As cenas HD antigas deixam de ser pisos de referência. Far/mid são camadas independentes; props têm profundidade declarada e escala limitada para não borrar. Material de tiles usa atlas próprio com metadados.
+
+Antes de publicar, seguir docs/ux/DEPTH-REVIEW.md: seis capturas por travessia, pés/mãos/apoios, escadas/elevador, passagem completa e combate ativo separados. Não esconder erro físico com máscara de cenário. Não chamar o jogo curto de oito áreas de campanha completa de24salas.

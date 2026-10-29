@@ -1,17 +1,19 @@
 # Shadowman / Senna Comics
 
-Para desenvolver este jogo, leia `skills/shadowman-development/SKILL.md` e siga o ciclo econômico descrito ali. O usuário autorizou um agente de QA com escopo limitado; não expanda para vários agentes sem necessidade concreta.
+Leia skills/shadowman-development/SKILL.md antes de desenvolver. Preserve o Shadowman de Eduardo Senna: capuz negro, rosto oculto, olhos azuis, infinito azul no peito, poderes de sombra e nenhuma espada. Usuário autorizou um especialista de desenvolvimento/QA; no máximo um agente de apoio por rodada, sem expansão sem necessidade.
 
-Preserve o Shadowman de Eduardo Senna: capuz negro, olhos azuis, infinito azul no peito e poderes de sombra. Não introduza espada. Reutilize `assets/shadowman.png` e mantenha cenário de cidade industrial gótica.
+## Modelo atual
 
-Não há dependências de execução para instalar. `npm test` verifica as regras atuais; `npm run build` cria o HTML único. `npm run test:browser` verifica o jogo e exige servidor local, Chromium e Playwright, já disponíveis no runtime cloud. Rode verificações proporcionais e confirme os resultados reais.
+prototype/index.html + tile-world.js + tile-render.js + world.js. Raiz index.html encaminha para o jogo. Oito salas3072×960 usam tilemap48 e degraus12. A arte não define colisão: plataformas desenhadas e físicas vêm dos mesmos dados. Não volte a colocar retas invisíveis sobre fachadas/escadas pintadas. Leia docs/ux/DEPTH-REVIEW.md e docs/phase-01/FIDELITY.md.
 
-Registre mudanças e limites em `docs/DEVELOPMENT.md`. Não prometa publicação, download pela interface ou execução contínua de IA sem capacidade comprovada. Use o checkout existente; não crie worktrees sem solicitação.
+Parallax: far0.14, mid0.43, mundo1. PNGs são masters; WebPs sem perdas são usados em runtime. Reaproveite as folhas entre mapas e confira pivôs, mãos, pés e apoios. AtaqueJ é projétil de sombra; Q é absorção parada, exclusiva do disparo. Não causar dano com hitbox invisível de ataque antigo.
 
-O mapa completo é autorado em `level.js`. Mudanças em rotas exigem o teste de percurso `tests/phase-route.cjs`, incluindo ida e volta, fragmentos e elevador. Use `level.scenes[].crop` para enquadrar os cenários atuais. O atlas modular anterior não substitui a prancha.
+## Validação
 
-Antes de editar ou publicar o visual, leia `docs/phase-01/FIDELITY.md`. Compare cada sala com `docs/phase-01/full-map.png`; testes mecânicos não demonstram fidelidade visual. A versão0.5 usa os quadros limpos e câmera por sala.
+- npm test: autoria/sintaxe atuais.
+- npm run build: exporta mapa e cria HTML independente + site com hashes.
+- npm run test:browser: browser atual.
+- node tests/tile-route.cjs: geometria isolada e combate ativo, sem reposicionar herói.
+- node tests/city-build.cjs: contrato de entrega.
 
-O protótipo público atual é0.10: prototype/index.html + world.js + city-level.js. A referência mais recente do usuário é o mockup individual de gameplay; assets/city-*-hd.png contém três cenários1672×941. Use npm run build:city, tests/city-build.cjs e npm run test:city para esse modelo. O build público separa scripts/PNGs com hash; preserve também HTML offline. Falha de imagem opcional não deve bloquear play; erro essencial precisa permanecer visível e permitir retry. Não volte a ampliar os seis recortes pequenos. As regras de level.js acima descrevem o modelo anterior.
-
-Movimento e ataque extras usam assets/shadowman-motion.png e metadadosshadowman-motion.json; escada deve mostrar costas, não pose lateral de salto. npm run test:animation valida estados/pausa de animação e salto variável. Reutilize a folha entre mapas e revise pivôs/apoios quando mudar geometria.
+Inspecione capturas reais de aproximação, salto, borda, degraus, chegada, retorno, escada e elevador. Testes mecânicos não demonstram fidelidade visual nem diversão. Não publique só porque um teste passou. Registre mudanças e limitações em docs/DEVELOPMENT.md. Não prometa processamento contínuo de IA ou qualidade AAA. Testes/build antigos são preservados com scripts legacy; não usá-los como prova do modelo atual.

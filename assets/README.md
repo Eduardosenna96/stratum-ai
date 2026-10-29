@@ -31,3 +31,9 @@ city-streets-hd.png, city-canal-hd.png e city-terminal-hd.png são cenas inteira
 ## Movimento0.10
 
 shadowman-motion.png é atlasRGBA1536×1024, com escalada de costas e ataque de palma. Os recortes não são uma grade regular: shadowman-motion.json registra áreas e pivôs na imagem. A geração repetiu duas poses superiores; o ciclo de quatro fases alterna as duas poses de costas e suas versões espelhadas para trocar braços/pernas. Ataque tem quatro recortes distintos, incluindo efeito de sombra. As poses de borda ainda usam a folha anterior. O atlas é reutilizado em todas as salas; revisão de mapa exige testar contato com superfícies, não gerar um personagem novo.
+
+## Mundo por tiles0.11
+
+parallax-far.png e parallax-mid.png são camadas independentes geradas para a cidade; shadowman-extra.png completa borda/subida/reação/derrota/dash/absorção. tile-materials.png é atlas3×2 de materiais512×512, com metadadosJSON. PNGs permanecem masters. Versões .webp dos oito assets ativos usam compressão sem perdas; nenhuma resolução foi inventada por upscale. Props são limitados à escala nativa no renderer.
+
+city-world.json é exportação de autoria: oito mapas com terrain/ladders/decor/conexões/recompensas, grade48 e subgrade12 para degraus. Gere com npm run export:tilemap; não edite JSON exportado no lugar do fonte prototype/tile-world.js. As duas folhas anteriores de personagem e o atlas36peças são reaproveitados; o runtime seleciona estado e pivô, não recria a arte para cada mapa.

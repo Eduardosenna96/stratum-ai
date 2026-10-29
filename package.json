@@ -1,17 +1,21 @@
 {
   "name": "shadowman-terminal-08",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "private": true,
   "description": "Jogo original de plataforma e poderes de sombra — Senna Comics",
   "scripts": {
     "start": "node server.cjs",
-    "build": "node tools/build.cjs",
-    "test": "node --check game.js && node --check server.cjs && node tests/mechanics.test.cjs",
-    "test:browser": "node tests/browser.cjs",
+    "build": "node tools/build-city.cjs",
+    "test": "node --check prototype/world.js && node --check prototype/tile-render.js && node tests/tile-world.test.cjs",
+    "test:browser": "node tests/tile-browser.cjs",
     "watch": "node tools/watch.cjs",
     "build:city": "node tools/build-city.cjs",
-    "test:city": "node tests/city-browser.cjs && node tests/city-route.cjs",
-    "test:animation": "node tests/city-animation.cjs"
+    "test:city": "node tests/tile-world.test.cjs && node tests/tile-browser.cjs && node tests/tile-route.cjs",
+    "test:tile": "node tests/tile-world.test.cjs && node tests/tile-browser.cjs && node tests/tile-route.cjs",
+    "export:tilemap": "node tools/export-tilemap.cjs",
+    "build:legacy": "node tools/build.cjs",
+    "test:legacy": "node --check game.js && node --check server.cjs && node tests/mechanics.test.cjs",
+    "test:animation:legacy": "node tests/city-animation.cjs"
   },
   "engines": {
     "node": ">=18"

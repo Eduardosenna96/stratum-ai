@@ -1,0 +1,11 @@
+{
+ "image":"shadowman-extra.png","runtime":"shadowman-extra.webp","size":[1536,1024],
+ "hang":{"rect":[0,0,384,550],"pivot":[200,300],"scale":0.15},
+ "mantle-pull":{"rect":[384,0,384,550],"pivot":[600,340],"scale":0.15},
+ "mantle-top":{"rect":[768,0,440,550],"pivot":[1050,320],"scale":0.18},
+ "hurt":{"rect":[0,550,384,474],"pivot":[220,966],"scale":0.18},
+ "defeated":{"rect":[384,550,400,474],"pivot":[620,955],"scale":0.20},
+ "dash":{"rect":[750,550,475,474],"pivot":[1090,900],"scale":0.18},
+ "absorb":{"rect":[1220,550,316,474],"pivot":[1375,965],"scale":0.205},
+ "notes":"Irregular isolated silhouettes, explicit source rectangles. Master PNG preserved; lossless WebP runtime. Standing transition reuses original idle cycle."
+}
