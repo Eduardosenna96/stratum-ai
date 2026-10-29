@@ -1,0 +1,117 @@
+{
+  "initial": "idle",
+  "transitions": {
+    "idle": [
+      "walk",
+      "run",
+      "jumpStart",
+      "crouch",
+      "cast",
+      "absorb",
+      "hurt"
+    ],
+    "walk": [
+      "idle",
+      "run",
+      "jumpStart",
+      "cast",
+      "hurt"
+    ],
+    "run": [
+      "idle",
+      "walk",
+      "jumpStart",
+      "dash",
+      "cast",
+      "hurt"
+    ],
+    "jumpStart": [
+      "rise"
+    ],
+    "rise": [
+      "apex",
+      "hang",
+      "hurt"
+    ],
+    "apex": [
+      "fall",
+      "hang",
+      "hurt"
+    ],
+    "fall": [
+      "land",
+      "hang",
+      "hurt",
+      "defeat"
+    ],
+    "land": [
+      "idle",
+      "walk",
+      "run"
+    ],
+    "climb": [
+      "idle",
+      "fall",
+      "hurt"
+    ],
+    "hang": [
+      "mantle",
+      "fall",
+      "hurt"
+    ],
+    "mantle": [
+      "idle"
+    ],
+    "cast": [
+      "idle",
+      "walk",
+      "run",
+      "hurt"
+    ],
+    "absorb": [
+      "idle",
+      "hurt"
+    ],
+    "hurt": [
+      "idle",
+      "fall",
+      "defeat"
+    ],
+    "defeat": [],
+    "dash": [
+      "idle",
+      "fall",
+      "hurt"
+    ],
+    "crouch": [
+      "idle",
+      "jumpStart",
+      "hurt"
+    ]
+  },
+  "rules": [
+    "cast and absorb are exclusive",
+    "climb animation advances by displacement",
+    "mantle anchors hands before feet",
+    "damage uses active frames or projectile contact only"
+  ],
+  "animationBindings": {
+    "idle": "hero/repouso",
+    "walk": "hero/caminhada",
+    "run": "hero/corrida",
+    "jumpStart": "hero/salto-inicio",
+    "rise": "hero/salto-subida",
+    "apex": "hero/salto-apice",
+    "fall": "hero/queda",
+    "land": "hero/pouso",
+    "climb": "hero/escada",
+    "hang": "hero/pendurar",
+    "mantle": "hero/subir-borda",
+    "cast": "hero/lanca-sombra",
+    "absorb": "hero/absorcao",
+    "hurt": "hero/dano",
+    "defeat": "hero/derrota",
+    "dash": "hero/passo-sombrio",
+    "crouch": "hero/agachar"
+  }
+}

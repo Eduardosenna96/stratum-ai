@@ -1,0 +1,18 @@
+{
+  "type": "tileset",
+  "name": "Phase01 materials preview",
+  "tilewidth": 48,
+  "tileheight": 48,
+  "tilecount": 6,
+  "columns": 3,
+  "image": "material-preview.png",
+  "imagewidth": 144,
+  "imageheight": 96,
+  "properties": [
+    {
+      "name": "productionMaster",
+      "type": "string",
+      "value": "assets/tile-materials.png"
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "frames": {
+    "hang": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 384,
+        "h": 550
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 384,
+        "h": 550
+      },
+      "sourceSize": {
+        "w": 384,
+        "h": 550
+      },
+      "pivot": {
+        "x": 0.5208333333333334,
+        "y": 0.5454545454545454
+      },
+      "worldScale": 0.15
+    },
+    "mantle-pull": {
+      "frame": {
+        "x": 384,
+        "y": 0,
+        "w": 384,
+        "h": 550
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 384,
+        "h": 550
+      },
+      "sourceSize": {
+        "w": 384,
+        "h": 550
+      },
+      "pivot": {
+        "x": 0.5625,
+        "y": 0.6181818181818182
+      },
+      "worldScale": 0.15
+    },
+    "mantle-top": {
+      "frame": {
+        "x": 768,
+        "y": 0,
+        "w": 440,
+        "h": 550
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 440,
+        "h": 550
+      },
+      "sourceSize": {
+        "w": 440,
+        "h": 550
+      },
+      "pivot": {
+        "x": 0.6409090909090909,
+        "y": 0.5818181818181818
+      },
+      "worldScale": 0.18
+    },
+    "hurt": {
+      "frame": {
+        "x": 0,
+        "y": 550,
+        "w": 384,
+        "h": 474
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 384,
+        "h": 474
+      },
+      "sourceSize": {
+        "w": 384,
+        "h": 474
+      },
+      "pivot": {
+        "x": 0.5729166666666666,
+        "y": 0.8776371308016878
+      },
+      "worldScale": 0.18
+    },
+    "defeated": {
+      "frame": {
+        "x": 384,
+        "y": 550,
+        "w": 400,
+        "h": 474
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 474
+      },
+      "sourceSize": {
+        "w": 400,
+        "h": 474
+      },
+      "pivot": {
+        "x": 0.59,
+        "y": 0.8544303797468354
+      },
+      "worldScale": 0.2
+    },
+    "dash": {
+      "frame": {
+        "x": 750,
+        "y": 550,
+        "w": 475,
+        "h": 474
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 475,
+        "h": 474
+      },
+      "sourceSize": {
+        "w": 475,
+        "h": 474
+      },
+      "pivot": {
+        "x": 0.7157894736842105,
+        "y": 0.7383966244725738
+      },
+      "worldScale": 0.18
+    },
+    "absorb": {
+      "frame": {
+        "x": 1220,
+        "y": 550,
+        "w": 316,
+        "h": 474
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 316,
+        "h": 474
+      },
+      "sourceSize": {
+        "w": 316,
+        "h": 474
+      },
+      "pivot": {
+        "x": 0.49050632911392406,
+        "y": 0.8755274261603375
+      },
+      "worldScale": 0.205
+    }
+  },
+  "meta": {
+    "app": "Shadowman phase-01 kit",
+    "image": "shadowman-extra.webp",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1536,
+      "h": 1024
+    },
+    "scale": "1"
+  }
+}

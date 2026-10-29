@@ -1,0 +1,49 @@
+{
+  "atlases": [
+    {
+      "key": "hero-base",
+      "frames": 24,
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "key": "drone",
+      "frames": 24,
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "key": "vigia",
+      "frames": 24,
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "key": "hero-motion",
+      "frames": 6,
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "key": "hero-extra",
+      "frames": 7,
+      "dimensions": [
+        1536,
+        1024
+      ]
+    }
+  ],
+  "clips": 29,
+  "maps": 8,
+  "bounds": "passed",
+  "integration": "not started",
+  "artApproval": "pending"
+}
