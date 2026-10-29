@@ -89,3 +89,11 @@ Usuário pediu referência de Castlevania e jogos modernos e mencionou REA/proje
 QA limitado ao agente já autorizado:38checks de navegador passaram (7novos para movimento, câmera, hold/buffer e impacto). Percurso físico de2480ticks pelas8salas,4descobertas, semreposicionarherói, zeroquedas/danoambiental; inimigosdesativados para isolar travessia. Captura real próxima e HUD inspecionados. Não equivale à reconstrução completa, nem valida diversão/dificuldade com jogadores. Uma integração externa continua dependendo de identificar o projeto que o usuário mencionou.
 
 Esclarecimento recebido antes da publicação0.8: usuário confirmou “Usar Castlevania como referência”. Não há projeto externo para integrar; seguir com código e universo próprios. A pendência de identificação registrada acima está resolvida.
+
+## UX de travessia0.9
+
+Referência atual do usuário: PrinceofPersia, com travessia experienciável, removendo os ovais azuis da captura. Eliminados todos os contornos/ícones de portal; relíquias agora usam pedestal∞. Hints só na proximidade e mensagens de bloqueio mantêm prioridade. PassagemCais/Ruas automática ao caminhar, com proteção de retorno. Arquivo continuaE: torná-lo automático capturava o acesso à escada dosTelhados, risco encontrado na revisão e corrigido antes da entrega.
+
+Shift caminha a1.8 versus4.6 e segura personagem antes de passo semapoio; saltar permite sair. Subida de borda usa trajetória contínua de16ticks; agarrar não é bloqueado por invulnerabilidade. As poses ainda são reaproveitadas, não há sheet dedicada deescalada. Detalhes e limites em docs/ux/TRAVESSIA.md.
+
+Validação final root: tests/city-browser.cjs passou, incluindo subida gradual, Shift/limite de borda e passagemsemretorno, além das regressões. Percurso físico2490ticks/8salas/4descobertas/zeroquedas, semreposicionar; inimigosdesativados para isolar travessia. Buildcontract passou com entrada3248bytes. Captura realv09inspecionada semovais. Agente existente colaborou na revisão e testes; conclusão feita pelo root após indisponibilidade doagente. Não houve pesquisa externa nem geração de imagens. Isto continua protótipo de8salas/3cenários, não implementação completa de PrinceofPersia.
